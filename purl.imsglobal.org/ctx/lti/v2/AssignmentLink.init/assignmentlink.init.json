@@ -1,0 +1,93 @@
+{
+    "@context" : {
+    "ci" : "http://ld.kinexis.com/vocab/lti/v1/ci#",
+    "exp" : "http://ld.kinexis.com/vocab/caliper/v1/core#",
+    "foaf" : "http://xmlns.com/foaf/0.1#",
+    "ldp" : "http://www.w3.org/ns/ldp#",
+    "liso" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#",
+    "lisp" : "http://ld.kinexis.com/vocab/lis/v2/pm#",
+    "lti" : "http://ld.kinexis.com/vocab/lti/v2/lti#",
+    "ltic" : "http://ld.kinexis.com/vocab/lti/v2/capability#",
+    "ltiv" : "http://ld.kinexis.com/vocab/lti/v2/variable#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "AssignmentLink" : {
+      "@id" : "lti:AssignmentLink",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#LtiLink"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#linkLineItem"
+          }
+        ]
+      }
+    },
+    "LineItem" : {
+      "@id" : "liso:LineItem",
+      "class" : {}
+
+    },
+    "linkLineItem" : {
+      "@id" : "lti:linkLineItem",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#AssignmentLink"
+        ]
+      }
+    },
+    "" : "lisp:",
+    "ci:" : "ci:",
+    "exp:" : "exp:",
+    "foaf:" : "foaf:",
+    "ldp:" : "ldp:",
+    "liso:" : "liso:",
+    "lti:" : "lti:",
+    "ltic:" : "ltic:",
+    "ltiv:" : "ltiv:",
+    "rdfs:" : "rdfs:",
+    "LtiLink" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#LtiLink",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem",
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "ContentItem" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem",
+      "class" : {}
+
+    },
+    "FileItem" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v1/ci#FileItem",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "ToolSettingsContainer" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer",
+      "class" : {}
+
+    },
+    "ToolProxyBinding" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#ToolProxyBinding",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "ToolProxy" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#ToolProxy",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    }
+  }
+}

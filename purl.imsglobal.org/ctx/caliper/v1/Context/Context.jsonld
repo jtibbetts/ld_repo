@@ -1,0 +1,494 @@
+{
+  "@id" : "http://ld.kinexis.co/ctx/caliper/v1/Caliper",
+  "@context" : [
+    {
+      "_comment": "Namespaces",
+
+      "@vocab": "http://ld.kinexis.co/vocab/caliper/v1/core",
+      "as" : "http://activitystrea.ms/2.0/",
+      "caliper": "http://ld.kinexis.co/caliper/v1/",
+      "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "prov": "http://www.w3.org/ns/prov#",
+      "schema" : "http://schema.org/", 
+
+      "org" : "http://www.w3.org/ns/org#", 
+      "xs" : "http://www.w3.org/2001/XMLSchema#", 
+      "liscm" : "http://ld.kinexis.co/vocab/lis/v2/liscm#", 
+      "lisp" : "http://ld.kinexis.co/vocab/lis/v2/pm#"
+
+    },
+    {
+      "_comment": "Validation Context",
+
+      "caliper:requiredPropertyValueForSequence": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of property-value pairs that are considered required when a sequence of json-ld are recieved",
+        "rdfs:range": "xsd:list"
+      },
+      "caliper:optionalPropertyValueForSequence": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of property-value pairs that are considered required when a sequence of json-ld are recieved",
+        "rdfs:range": "xsd:list"
+      },
+
+      "caliper:requiredProperty": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of all properties required for a type",
+        "rdfs:range": "xsd:list"
+      },
+      "caliper:requiredWhen": {
+        "@type":      "rdf:Property",
+        "_comment":   "properties that are only required in some situations (otherwise they are optional)",
+        "rdfs:range": "xsd:list"
+      },
+
+      "caliper:optionalProperty": {
+        "@type":      "rdf:Property",
+        "_comment":   "list of properties that are to be flagged as optional by validation for a type",
+        "rdfs:range": "xsd:list"
+      }
+
+    },
+    {
+      "_comment": "Event properties",
+
+      "actor": "as:actor",
+      "action": "as:verb",
+      "object": "as:object",
+      "eventTime": "prov:startedAtTime",
+
+      "generated": "prov:generated",
+      "target": "caliper:target",
+      "edApp": "caliper:edApp",
+      "group": "caliper:group",
+
+      "membership": "caliper:lis/membership",
+      "federatedSession": "caliper:federatedSession"
+
+    },
+    {
+      "_comment": "Caliper common properties",
+
+      "name" : "schema:name",
+      "description" : "schema:description",
+      "dateCreated" : "schema:dateCreated",
+      "dateModified" : "schema:dateModified",
+      "datePublished" : "schema:datePublished",
+      "extensions" : "caliper:extensions",
+
+      "startedAtTime": "prov:startedAtTime",
+      "endedAtTime": "prov:endedAtTime"
+    },
+    {
+      "_comment": "Entities",
+
+      "caliper:Entity" : {
+        "_comment": "The base Caliper Entity.  Analogous to a schema.org Thing",
+        "caliper:optionalProperty": [
+          "name",
+          "description",
+          "extensions",
+          "dateCreated",
+          "dateModified"
+        ]
+      },
+
+      "caliper:Session" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:requiredProperty": [
+          {"@id": "startedAtTime", "caliper:requiredWhen": "$parent.action=action#LoggedIn"},
+          {"@id": "endedAtTime", "caliper:requiredWhen": "$parent.action=action#LoggedOut"}
+        ],
+        "caliper:optionalProperty": [
+          "actor",
+          "duration"
+        ]
+      },
+
+      "caliper:Result" : {
+        "_comment": "Representation of a Result. Result's are generated as part of an interaction represented by an OutcomeEvent",
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "assignable",
+          "actor",
+          "normalScore",
+          "penaltyScore",
+          "extraCreditScore",
+          "totalScore",
+          "curvedTotalScore",
+          "curveFactor",
+          "comment",
+          "scoredBy"
+        ]
+      },
+
+      "caliper:LearningObjective" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Entity"
+      },
+
+      "caliper:SoftwareApplication" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Entity"
+      },
+      "caliper:lis/Person" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Entity"
+      },
+      "caliper:Organization" : {
+        "_comment": [
+          "A collection of people organized together into a community or other social, commercial or political structure.",
+          "The group has some common purpose or reason for existence which goes beyond the set of people belonging to it",
+          "and can act as an Agent. Organizations are often decomposable into hierarchical structures."
+        ],
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "subOrganizationOf"
+        ]
+      },
+
+      "caliper:lis/Group" : {
+        "_comment":   "A Caliper LIS Group represents a Course substructure that a Person is able to join as a member.",
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "credits",
+          "category",
+          "academicSession",
+          "subOrganizationOf"
+        ]
+      },
+      "caliper:lis/Membership" : {
+        "_comment":   [
+          "A Caliper Membership is used to define the relationship between objects that can have memberIds and objects",
+          "that can be memberIds. Objects recognized as having memberIds are CourseOffering, CourseSection",
+          "and Group, all of which implement the Joinable marker interface. Only a Person object can be a memberId."
+        ],
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "member",
+          "organization",
+          "roles",
+          "status"
+        ]
+      },
+
+      "caliper:lis/CourseOffering" : {
+        "_comment": [
+          "A CourseOffering is the occurrence of a course in a specific term, semester, etc.  A Caliper",
+          "CourseOffering provides a subset of the CourseOffering properties specified in the IMS LTI 2.0",
+          "specification, which in turn, draws inspiration from the IMS LIS 1.0 specification."
+        ],
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "academicSession",
+          "membership",
+          "subOrganizationOf"
+        ]
+      },
+      "caliper:lis/CourseSection" : {
+        "_comment": [
+          "A CourseSection is a way to represent a group of people associated with a course or class.",
+          "These groups may include everyone in the class or course, or may be subsets of that whole group.",
+          "CourseSections may have sub-sections (these are created as separate Group objects linked using",
+          "the relationship). Examples of a CourseSection are Lecture, Laboratory, Studio, Seminar, etc.",
+          "There may be several instances of a type of CourseSection e.g., multiple lectures.",
+          "",
+          "A Caliper CourseSection provides a subset of the CourseSection properties specified in the",
+          "IMS LTI 2.0 specification, which in turn, draws inspiration from the IMS LIS 1.0 specification."
+        ],
+        "rdfs:subClassOf": "caliper:CourseOffering",
+        "caliper:optionalProperty": [
+          "category"
+        ]
+      },
+
+      "caliper:DigitalResource" : {
+        "_comment": "Caliper representation of a CreativeWork (https://schema.org/CreativeWork)",
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "objectType",
+          "alignedLearningObjective",
+          "keywords",
+          "isPartOf",
+          "datePublished",
+          "version"
+        ]
+      },
+      "caliper:AssignableDigitalResource" : {
+        "_comment":   "Assignable Digital Resource",
+        "rdfs:subClassOf": "caliper:DigitalResource",
+        "caliper:optionalProperty": [
+          "dateToActivate",
+          "dateToShow",
+          "dateToStartOn",
+          "dateToSubmit",
+          "maxAttempts",
+          "maxSubmits",
+          "maxScore"
+        ]
+      },
+      "caliper:Frame" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:DigitalResource",
+        "caliper:optionalProperty": [
+          "index"
+        ]
+      },
+      "caliper:WebPage" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:DigitalResource"
+      },
+
+      "caliper:MediaLocation" : {
+        "_comment":   "Media Location",
+        "rdfs:subClassOf": "caliper:DigitalResource",
+        "caliper:optionalProperty": [
+          "currentTime"
+        ]
+      },
+      "caliper:MediaObject" : {
+        "_comment":   "An image, video, or audio object embedded in a web page.",
+        "rdfs:subClassOf": "caliper:DigitalResource",
+        "caliper:optionalProperty": [
+          "duration"
+        ]
+      },
+      "caliper:AudioObject" : {
+        "_comment":   "An audio object embedded in a web page.",
+        "rdfs:subClassOf": "caliper:MediaObject",
+        "caliper:optionalProperty": [
+          "duration",
+          "volumeMin",
+          "volumeMax",
+          "volumeLevel",
+          "muted"
+        ]
+      },
+      "caliper:VideoObject" : {
+        "_comment":   "A Video object embedded in a web page.",
+        "rdfs:subClassOf": "caliper:MediaObject"
+      },
+
+      "caliper:Annotation" : {
+        "_comment": [
+          "The super-class of all Annotation types.",
+          "",
+          "Direct sub-types can include - Highlight, Attachment, etc. - all of",
+          "which are specified in the Caliper Annotation Metric Profile"
+        ],
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "annotated"
+        ]
+      },
+      "caliper:BoorkmarkAnnotation" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Annotation",
+        "caliper:optionalProperty": [
+          "bookmarkNotes"
+        ]
+      },
+      "caliper:HighlightAnnotation" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Annotation",
+        "caliper:optionalProperty": [
+          "selection",
+          "selectionText"
+        ]
+      },
+      "caliper:SharedAnnotation" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Annotation",
+        "caliper:optionalProperty": [
+          "withAgents"
+        ]
+      },
+      "caliper:TagAnnotation" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Annotation",
+        "caliper:optionalProperty": [
+          "tags"
+        ]
+      },
+
+      "caliper:Response" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "assignable",
+          "actor",
+          "attempt",
+          "startedAtTime",
+          "endedAtTime",
+          "duration"
+        ]
+      },
+      "caliper:FillinBlankResponse" : {
+        "_comment": [
+          "Represents response text or integer/decimal/scientific numbers that completes a question",
+          "designed with one or more 'fill in the blank' option prompts."
+        ],
+        "rdfs:subClassOf": "caliper:Response",
+        "caliper:optionalProperty": [
+          "values"
+        ]
+      },
+      "caliper:MultipleResponseResponse" : {
+        "_comment": [
+          "Representation of a response to a multiple choice question that permits one or more",
+          "options to be selected."
+        ],
+        "rdfs:subClassOf": "caliper:Response",
+        "caliper:optionalProperty": [
+          "values"
+        ]
+      },
+      "caliper:SelectTextResponse" : {
+        "_comment": [
+          "Represents a response that identifies text from a presented paragraph or list.",
+          "The response is the identified string or a mapping to a logical identifier"
+        ],
+        "rdfs:subClassOf": "caliper:Response",
+        "caliper:optionalProperty": [
+          "values"
+        ]
+      },
+      "caliper:MultipleChoiceResponse" : {
+        "_comment":   "Represents a response to a multiple choice question that permits a single option to be selected.",
+        "rdfs:subClassOf": "caliper:Response",
+        "caliper:optionalProperty": [
+          "value"
+        ]
+      },
+      "caliper:TrueFalseResponse" : {
+        "_comment": [
+          "Represents response to a multiple choice question that limits options to either 'true or false',",
+          "'agree or disagree', etc."
+        ],
+        "rdfs:subClassOf": "caliper:Response",
+        "caliper:optionalProperty": [
+          "value"
+        ]
+      }
+
+    },
+    {
+      "_comment": "Assessment MP",
+
+      "caliper:Attempt" : {
+        "_comment": [
+          "Representation of an Attempt. Attempts are generated as part of or",
+          "are the object of an interaction represented by an AssignableEvent."
+        ],
+        "rdfs:subClassOf": "caliper:Entity",
+        "caliper:optionalProperty": [
+          "assignable",
+          "actor",
+          "count",
+          "startedAtTime",
+          "endedAtTime",
+          "duration"
+        ]
+      },
+
+      "caliper:AssessmentItem" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:AssignableDigitalResource",
+        "caliper:optionalProperty": [
+          "isTimeDependent"
+        ]
+      },
+
+      "caliper:Assessment" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:DigitalResource",
+        "caliper:optionalProperty": [
+          "assessmentItems"
+        ]
+      }
+
+    },
+    {
+      "_comment": "Events",
+
+      "caliper:Event" : {
+        "_comment":   "Core caliper event structure and base class for all events",
+        "caliper:requiredProperty": [
+          "actor",
+          "action",
+          "object",
+          "eventTime"
+        ],
+        "caliper:optionalProperty": [
+          "target",
+          "generated",
+          "edApp",
+          "group",
+          "membership",
+          "federatedSession"
+        ]
+      },
+
+      "caliper:AssessmentEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Submitted"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Paused", "action=action#Restarted"]
+      },
+      "caliper:AssessmentItemEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Skipped", "action=action#Reviewed", "action=action#Viewed"]
+      },
+      "caliper:AnnotationEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#Bookmarked", "action=action#Highlighted", "action=action#Shared", "action=action#Tagged"]
+      },
+      "caliper:AssignableEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Completed"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Activated", "action=action#Deactivated", "action=action#Showed", "action=action#Hid", "action=action#Reviewed", "action=action#Abandoned"]
+      },
+      "caliper:MediaEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#Started", "action=action#Resumed", "action=action#Paused", "action=action#Ended"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#OpenedPopout", "action=action#ClosedPopout", "action=action#EnteredFullscreen", "action=action#ExitedFullscreen", "action=action#ChangedSize", "action=action#ChangedResolution", "action=action#Rewound", "action=action#ForwardedTo", "action=action#JumpedTo", "action=action#ChangedSpeed", "action=action#Muted", "action=action#Unmuted", "action=action#ChangedVolume", "action=action#EnabledCloseCaptioning", "action=action#DisabledCloseCaptioning"]
+      },
+      "caliper:NavigationEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:optionalProperty": [
+          "navigatedFrom"
+        ]
+      },
+      "caliper:OutcomeEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#Graded"]
+      },
+      "caliper:ReadingEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#NavigatedTo", "action=action#Viewed"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#Searched"]
+      },
+      "caliper:SessionEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event",
+        "caliper:requiredPropertyValueForSequence": ["action=action#LoggedIn", "action=action#LoggedOut"],
+        "caliper:optionalPropertyValueForSequence": ["action=action#TimedOut"]
+      },
+      "caliper:ViewEvent" : {
+        "_comment":   "",
+        "rdfs:subClassOf": "caliper:Event"
+      }
+
+    }
+  ]
+}

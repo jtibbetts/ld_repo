@@ -1,0 +1,31 @@
+{
+  "@context" : {
+    "ci" : "http://ld.kinexis.com/vocab/lti/v1/ci#",
+    "exp" : "http://ld.kinexis.com/vocab/caliper/v1/core#",
+    "foaf" : "http://xmlns.com/foaf/0.1#",
+    "ldp" : "http://www.w3.org/ns/ldp#",
+    "liso" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#",
+    "lisp" : "http://ld.kinexis.com/vocab/lis/v2/pm#",
+    "lti" : "http://ld.kinexis.com/vocab/lti/v2/lti#",
+    "ltic" : "http://ld.kinexis.com/vocab/lti/v2/capability#",
+    "ltiv" : "http://ld.kinexis.com/vocab/lti/v2/variable#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "AssignmentLink" : "lti:AssignmentLink",
+    "LineItem" : "liso:LineItem",
+    "linkLineItem" : {
+      "@id" : "lti:linkLineItem",
+      "@type" : "@id"
+    },
+    "" : "lisp:",
+    "ci:" : "ci:",
+    "exp:" : "exp:",
+    "foaf:" : "foaf:",
+    "ldp:" : "ldp:",
+    "liso:" : "liso:",
+    "lti:" : "lti:",
+    "ltic:" : "ltic:",
+    "ltiv:" : "ltiv:",
+    "rdfs:" : "rdfs:"
+  },
+  "@id" : "http://ld.kinexis.com/ctx/lti/v2/AssignmentLink.init"
+}

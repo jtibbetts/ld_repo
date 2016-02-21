@@ -1,0 +1,87 @@
+{
+    "@context" : {
+    "lti" : "http://ld.kinexis.com/vocab/lti/v2/lti#",
+    "lti-type" : "http://ld.kinexis.com/xsd/lti/v2/ltid#",
+    "xs" : "http://www.w3.org/2001/XMLSchema#",
+    "GUID.Type" : {
+      "@id" : "lti-type:GUID.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#NCName",
+        "maxLength" : 4096,
+        "pattern" : "\\S*"
+      }
+    },
+    "ToolProxy" : {
+      "@id" : "lti:ToolProxy",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#tool_proxy_guid",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "custom_url" : {
+      "@id" : "lti:custom_url",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "tool_proxy_guid" : {
+      "@id" : "lti:tool_proxy_guid",
+      "@type" : "lti-type:GUID.Type",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "anyURI" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "ToolSettingsContainer" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#custom_url"
+          }
+        ]
+      }
+    },
+    "LtiLink" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#LtiLink",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer",
+          "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "AssignmentLink" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#AssignmentLink",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#LtiLink"
+        ]
+      }
+    },
+    "ContentItem" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem",
+      "class" : {}
+
+    },
+    "ToolProxyBinding" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v2/lti#ToolProxyBinding",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    }
+  }
+}

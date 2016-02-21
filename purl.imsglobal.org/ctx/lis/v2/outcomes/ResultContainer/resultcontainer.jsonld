@@ -1,0 +1,433 @@
+{
+    "@context" : {
+    "ci" : "http://ld.kinexis.com/vocab/lti/v1/ci#",
+    "exp" : "http://ld.kinexis.com/vocab/caliper/v1/core#",
+    "foaf" : "http://xmlns.com/foaf/0.1#",
+    "ldp" : "http://www.w3.org/ns/ldp#",
+    "liso" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#",
+    "lisp" : "http://ld.kinexis.com/vocab/lis/v2/pm#",
+    "lti" : "http://ld.kinexis.com/vocab/lti/v2/lti#",
+    "lti-type" : "http://ld.kinexis.com/xsd/lti/v2/ltid#",
+    "ltic" : "http://ld.kinexis.com/vocab/lti/v2/capability#",
+    "ltiv" : "http://ld.kinexis.com/vocab/lti/v2/variable#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "xs" : "http://www.w3.org/2001/XMLSchema#",
+    "Agent" : {
+      "@id" : "foaf:Agent",
+      "class" : {}
+
+    },
+    "Container" : {
+      "@id" : "ldp:Container",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipSubject",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Context" : {
+      "@id" : "lti:Context",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#sourcedId"
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#context_id",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#lineItems"
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#lineItem"
+          }
+        ]
+      }
+    },
+    "DataValue.Type" : {
+      "@id" : "lti-type:DataValue.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#string",
+        "maxLength" : 4096
+      }
+    },
+    "LISResult" : {
+      "@id" : "liso:LISResult",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#timestamp"
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#resultScoreConstraints",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#resultStatus",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#totalScore",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#resultOf",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#normalScore",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#penaltyScore",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#extraCreditScore",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "LineItem" : {
+      "@id" : "liso:LineItem",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#result"
+          }
+        ]
+      }
+    },
+    "LineItemContainer" : {
+      "@id" : "liso:LineItemContainer",
+      "class" : {
+        "supertype" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipSubject",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://ld.kinexis.com/vocab/lti/v2/lti#Context"
+          }
+        ]
+      }
+    },
+    "Literal" : "rdfs:Literal",
+    "NumericLimits" : {
+      "@id" : "liso:NumericLimits",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#ScoreConstraints"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#normalMaximum",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#totalMaximum",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#extraCreditMaximum",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Page" : {
+      "@id" : "ldp:Page",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#pageOf",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#nextPage",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Resource" : "rdfs:Resource",
+    "ResultContainer" : {
+      "@id" : "liso:ResultContainer",
+      "class" : {
+        "supertype" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipSubject",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#LineItem"
+          }
+        ]
+      }
+    },
+    "ResultStatus" : {
+      "@id" : "liso:ResultStatus",
+      "class" : {}
+
+    },
+    "ScoreConstraints" : {
+      "@id" : "liso:ScoreConstraints",
+      "class" : {}
+
+    },
+    "comment" : {
+      "@id" : "liso:comment",
+      "@type" : "lti-type:DataValue.Type",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "context_id" : {
+      "@id" : "lti:context_id",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "extraCreditMaximum" : {
+      "@id" : "liso:extraCreditMaximum",
+      "@type" : "xs:float",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#NumericLimits"
+        ]
+      }
+    },
+    "extraCreditScore" : {
+      "@id" : "liso:extraCreditScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "gradedBy" : {
+      "@id" : "liso:gradedBy",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "lineItem" : {
+      "@id" : "lti:lineItem",
+      "@type" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#LineItem",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "lineItems" : {
+      "@id" : "lti:lineItems",
+      "@type" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#LineItemContainer",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "membershipSubject" : {
+      "@id" : "ldp:membershipSubject",
+      "@type" : "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ]
+      }
+    },
+    "nextPage" : {
+      "@id" : "ldp:nextPage",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/ldp#Page"
+        ]
+      }
+    },
+    "normalMaximum" : {
+      "@id" : "liso:normalMaximum",
+      "@type" : "xs:float",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#NumericLimits"
+        ]
+      }
+    },
+    "normalScore" : {
+      "@id" : "liso:normalScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "pageOf" : {
+      "@id" : "ldp:pageOf",
+      "@type" : "http://www.w3.org/ns/ldp#Container",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/ldp#Page"
+        ]
+      }
+    },
+    "penaltyScore" : {
+      "@id" : "liso:penaltyScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "result" : {
+      "@id" : "liso:result",
+      "@type" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "resultAgent" : {
+      "@id" : "liso:resultAgent",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "resultOf" : {
+      "@id" : "liso:resultOf",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "resultScore" : {
+      "@id" : "liso:resultScore",
+      "@type" : "http://www.w3.org/2000/01/rdf-schema#Literal",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "resultScoreConstraints" : {
+      "@id" : "liso:resultScoreConstraints",
+      "@type" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#ScoreConstraints",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "resultStatus" : {
+      "@id" : "liso:resultStatus",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "sourcedId" : {
+      "@id" : "lti:sourcedId",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "timestamp" : {
+      "@id" : "liso:timestamp",
+      "@type" : "xs:dateTime",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "totalMaximum" : {
+      "@id" : "liso:totalMaximum",
+      "@type" : "xs:float",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#NumericLimits"
+        ]
+      }
+    },
+    "totalScore" : {
+      "@id" : "liso:totalScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "" : "lisp:",
+    "Completed" : "liso:Completed",
+    "Final" : "liso:Final",
+    "Initialized" : "liso:Initialized",
+    "Started" : "liso:Started",
+    "ci:" : "ci:",
+    "exp:" : "exp:",
+    "foaf:" : "foaf:",
+    "ldp:" : "ldp:",
+    "liso:" : "liso:",
+    "lisp:" : "lisp:",
+    "lti:" : "lti:",
+    "ltic:" : "ltic:",
+    "ltiv:" : "ltiv:",
+    "nil" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil",
+    "rdfs:" : "rdfs:",
+    "normalizedString" : "http://www.w3.org/2001/XMLSchema#normalizedString",
+    "float" : "http://www.w3.org/2001/XMLSchema#float",
+    "decimal" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "dateTime" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "Person" : {
+      "@id" : "http://ld.kinexis.com/vocab/lis/v2/pm#Person",
+      "class" : {
+        "supertype" : [
+          "http://xmlns.com/foaf/0.1#Agent"
+        ]
+      }
+    },
+    "AbstractResult" : {
+      "@id" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#resultScore"
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#resultAgent"
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#gradedBy"
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#comment"
+          }
+        ]
+      }
+    },
+    "Result" : {
+      "@id" : "http://ld.kinexis.com/vocab/lis/v2/outcomes#Result",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    }
+  }
+}

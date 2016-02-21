@@ -1,0 +1,357 @@
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+
+<http://www.w3.org/ns/hydra/core> a owl:Ontology ;
+	cc:attributionName "Hydra W3C Community Group"^^xsd:string ;
+	cc:attributionURL <http://www.hydra-cg.com/> ;
+	cc:license <http://creativecommons.org/licenses/by/4.0/> ;
+	dc:description "The Hydra Core Vocabulary is a lightweight vocabulary to create hypermedia-driven Web APIs. By specifying a number of concepts commonly used in Web APIs it enables the creation of generic API clients."^^xsd:string ;
+	dc:publisher "Hydra W3C Community Group"^^xsd:string ;
+	dc:rights "Copyright © 2012-2014 the Contributors to the Hydra Core Vocabulary Specification"^^xsd:string ;
+	<http://purl.org/vocab/vann/preferredNamespacePrefix> "hydra"^^xsd:string ;
+	rdfs:comment "A lightweight vocabulary for hypermedia-driven Web APIs"^^xsd:string ;
+	rdfs:label "The Hydra Core Vocabulary"^^xsd:string .
+
+hydra:Resource a hydra:Class ;
+	rdfs:comment "The class of dereferenceable resources."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Hydra Resource"^^xsd:string ;
+	rdfs:subClassOf rdfs:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:Class a hydra:Resource , rdfs:Class ;
+	rdfs:comment "The class of Hydra classes. Hydra classes and their instances are dereferenceable resources."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Hydra Class"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource , rdfs:Class ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:Link a hydra:Class ;
+	rdfs:comment "The class of properties representing links."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Link"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource , rdf:Property ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:apiDocumentation a hydra:Link ;
+	rdfs:comment "A link to the API documentation"^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "apiDocumentation"^^xsd:string ;
+	rdfs:range hydra:ApiDocumentation ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:ApiDocumentation a hydra:Class ;
+	rdfs:comment "The Hydra API documentation class"^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "ApiDocumentation"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:entrypoint a hydra:Link ;
+	rdfs:comment "A link to main entry point of the Web API"^^xsd:string ;
+	rdfs:domain hydra:ApiDocumentation ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "entrypoint"^^xsd:string ;
+	rdfs:range hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:supportedClass a hydra:Link ;
+	rdfs:comment "A class known to be supported by the Web API"^^xsd:string ;
+	rdfs:domain hydra:ApiDocumentation ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "supported classes"^^xsd:string ;
+	rdfs:range hydra:Class ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:statusCodes a hydra:Link ;
+	rdfs:comment "Additional information about status codes that might be returned by the Web API"^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "status codes"^^xsd:string ;
+	rdfs:range hydra:StatusCodeDescription ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:StatusCodeDescription a hydra:Class ;
+	rdfs:comment "Additional information about a status code that might be returned."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Status code description"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:supportedProperty a hydra:Link ;
+	rdfs:comment "The properties known to be supported by a Hydra class"^^xsd:string ;
+	rdfs:domain hydra:Class ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "supported properties"^^xsd:string ;
+	rdfs:range hydra:SupportedProperty ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:SupportedProperty a hydra:Class ;
+	rdfs:comment "A property known to be supported by a Hydra class."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Supported Property"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:property a rdf:Property ;
+	rdfs:comment "A property"^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "property"^^xsd:string ;
+	rdfs:range rdf:Property ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:required a rdf:Property ;
+	rdfs:comment "True if the property is required, false otherwise."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "required"^^xsd:string ;
+	rdfs:range xsd:boolean ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:readonly a rdf:Property ;
+	rdfs:comment "True if the property is read-only, false otherwise."^^xsd:string ;
+	rdfs:domain hydra:SupportedProperty ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "ready-only"^^xsd:string ;
+	rdfs:range xsd:boolean ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:writeonly a rdf:Property ;
+	rdfs:comment "True if the property is write-only, false otherwise."^^xsd:string ;
+	rdfs:domain hydra:SupportedProperty ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "write-only"^^xsd:string ;
+	rdfs:range xsd:boolean ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:supportedOperation a hydra:Link ;
+	rdfs:comment "An operation supported by instances of the specific Hydra class or the target of the Hydra link"^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "supported operation"^^xsd:string ;
+	rdfs:range hydra:Operation ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:Operation a hydra:Class ;
+	rdfs:comment "An operation."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Operation"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:operation a hydra:Link ;
+	rdfs:comment "An operation supported by the Hydra resource"^^xsd:string ;
+	rdfs:domain hydra:Resource ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "operation"^^xsd:string ;
+	rdfs:range hydra:Operation ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:CreateResourceOperation a hydra:Class ;
+	rdfs:comment "A CreateResourceOperation is a HTTP operation which expects an input of the type specified by hydra:expects and creates a resource of the type specified by hydra:returns."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "CreateResourceOperation"^^xsd:string ;
+	rdfs:subClassOf hydra:Operation ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:ReplaceResourceOperation a hydra:Class ;
+	rdfs:comment "A ReplaceResourceOperation is a HTTP operation which overwrites a resource. It expects data of the type specified in hydra:expects and results in a resource of the type specified by hydra:returns."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "ReplaceResourceOperation"^^xsd:string ;
+	rdfs:subClassOf hydra:Operation ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:DeleteResourceOperation a hydra:Class ;
+	rdfs:comment "A DeleteResourceOperation is a HTTP operation that deletes a resource."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "DeleteResourceOperation"^^xsd:string ;
+	rdfs:subClassOf hydra:Operation ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:method a rdf:Property ;
+	rdfs:comment "The HTTP method."^^xsd:string ;
+	rdfs:domain hydra:Operation ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "method"^^xsd:string ;
+	rdfs:range xsd:string ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:expects a hydra:Link ;
+	rdfs:comment "The information expected by the Web API."^^xsd:string ;
+	rdfs:domain hydra:Operation ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "expects"^^xsd:string ;
+	rdfs:range hydra:Class ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:returns a hydra:Link ;
+	rdfs:comment "The information returned by the Web API on success"^^xsd:string ;
+	rdfs:domain hydra:Operation ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "returns"^^xsd:string ;
+	rdfs:range hydra:Class ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:statusCode a rdf:Property ;
+	rdfs:comment "The HTTP status code"^^xsd:string ;
+	rdfs:domain hydra:StatusCodeDescription ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "status code"^^xsd:string ;
+	rdfs:range xsd:integer ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:title a rdf:Property ;
+	rdfs:comment "A title, often used along with a description."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "title"^^xsd:string ;
+	rdfs:range xsd:string ;
+	rdfs:subPropertyOf rdfs:label ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:description a rdf:Property ;
+	rdfs:comment "A description."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "description"^^xsd:string ;
+	rdfs:range xsd:string ;
+	rdfs:subPropertyOf rdfs:comment ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:Error a hydra:Class ;
+	rdfs:comment "A runtime error, used to report information beyond the returned status code."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Error"^^xsd:string ;
+	rdfs:subClassOf hydra:StatusCodeDescription ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:Collection a hydra:Class ;
+	rdfs:comment "A collection holding references to a number of related resources."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Collection"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:member a hydra:Link ;
+	rdfs:comment "A member of the collection"^^xsd:string ;
+	rdfs:domain hydra:Collection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "member"^^xsd:string ;
+	rdfs:range hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:PagedCollection a hydra:Class ;
+	rdfs:comment "A PagedCollection is a subclass of Collection with the only difference that its members are sorted and only a subset of all members are returned in a single PagedCollection. To get the other members, the nextPage/previousPage properties have to be used."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "PagedCollection"^^xsd:string ;
+	rdfs:subClassOf hydra:Collection ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:totalItems a rdf:Property ;
+	rdfs:comment "The total number of items referenced by a collection or a set of interlinked PagedCollections."^^xsd:string ;
+	rdfs:domain hydra:Collection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "total items"^^xsd:string ;
+	rdfs:range xsd:integer ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:itemsPerPage a rdf:Property ;
+	rdfs:comment "The maximum number of items referenced by each single PagedCollection in a set of interlinked PagedCollections."^^xsd:string ;
+	rdfs:domain hydra:PagedCollection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "items per page"^^xsd:string ;
+	rdfs:range xsd:integer ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:firstPage a hydra:Link ;
+	rdfs:comment "The first page of an interlinked set of PagedCollections"^^xsd:string ;
+	rdfs:domain hydra:PagedCollection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "first page"^^xsd:string ;
+	rdfs:range hydra:PagedCollection ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:lastPage a hydra:Link ;
+	rdfs:comment "The last page of an interlinked set of PagedCollections"^^xsd:string ;
+	rdfs:domain hydra:PagedCollection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "last page"^^xsd:string ;
+	rdfs:range hydra:PagedCollection ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:nextPage a hydra:Link ;
+	rdfs:comment "The page following the current instance in an interlinked set of PagedCollections"^^xsd:string ;
+	rdfs:domain hydra:PagedCollection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "next page"^^xsd:string ;
+	rdfs:range hydra:PagedCollection ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:previousPage a hydra:Link ;
+	rdfs:comment "The page preceding the current instance in an interlinked set of PagedCollections"^^xsd:string ;
+	rdfs:domain hydra:PagedCollection ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "previous page"^^xsd:string ;
+	rdfs:range hydra:PagedCollection ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:search a hydra:TemplatedLink ;
+	rdfs:comment "A IRI template that can be used to query a collection"^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "search"^^xsd:string ;
+	rdfs:range hydra:IriTemplate ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:IriTemplate a hydra:Class ;
+	rdfs:comment "The class of IRI templates."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "IRI Template"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:freetextQuery a rdf:Property ;
+	rdfs:comment "A property representing a freetext query."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "freetext query"^^xsd:string ;
+	rdfs:range xsd:string ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:TemplatedLink a hydra:Class ;
+	rdfs:comment "A templated link."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "Templated Link"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource , rdf:Property ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:template a rdf:Property ;
+	rdfs:comment "An IRI template as defined by RFC6570."^^xsd:string ;
+	rdfs:domain hydra:IriTemplate ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "template"^^xsd:string ;
+	rdfs:range xsd:string ;
+	rdfs:seeAlso <http://tools.ietf.org/html/rfc6570> ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:mapping a rdf:Property ;
+	rdfs:comment "A variable-to-property mapping of the IRI template."^^xsd:string ;
+	rdfs:domain hydra:IriTemplate ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "mapping"^^xsd:string ;
+	rdfs:range hydra:IriTemplateMapping ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:IriTemplateMapping a hydra:Class ;
+	rdfs:comment "A mapping from an IRI template variable to a property."^^xsd:string ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "IriTemplateMapping"^^xsd:string ;
+	rdfs:subClassOf hydra:Resource ;
+	vs:term_status "testing"^^xsd:string .
+
+hydra:variable a rdf:Property ;
+	rdfs:comment "An IRI template variable"^^xsd:string ;
+	rdfs:domain hydra:IriTemplateMapping ;
+	rdfs:isDefinedBy <http://www.w3.org/ns/hydra/core> ;
+	rdfs:label "variable"^^xsd:string ;
+	rdfs:range xsd:string ;
+	vs:term_status "testing"^^xsd:string .

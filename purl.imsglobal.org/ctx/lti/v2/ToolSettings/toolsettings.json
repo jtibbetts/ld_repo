@@ -1,0 +1,81 @@
+{
+    "@context" : {
+    "lti" : "http://ld.kinexis.com/vocab/lti/v2/lti#",
+    "xs" : "http://www.w3.org/2001/XMLSchema#",
+    "AssignmentLink" : {
+      "@id" : "lti:AssignmentLink",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#LtiLink"
+        ]
+      }
+    },
+    "LtiLink" : {
+      "@id" : "lti:LtiLink",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem",
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "PropertyMap" : {
+      "@id" : "lti:PropertyMap",
+      "class" : {}
+
+    },
+    "ToolProxy" : {
+      "@id" : "lti:ToolProxy",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "ToolProxyBinding" : {
+      "@id" : "lti:ToolProxyBinding",
+      "class" : {
+        "supertype" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "ToolSettingsContainer" : {
+      "@id" : "lti:ToolSettingsContainer",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#custom_url",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://ld.kinexis.com/vocab/lti/v2/lti#custom",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "custom" : {
+      "@id" : "lti:custom",
+      "@type" : "http://ld.kinexis.com/vocab/lti/v2/lti#PropertyMap",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "custom_url" : {
+      "@id" : "lti:custom_url",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://ld.kinexis.com/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "anyURI" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "ContentItem" : {
+      "@id" : "http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem",
+      "class" : {}
+
+    }
+  }
+}

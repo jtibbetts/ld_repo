@@ -1,0 +1,891 @@
+@prefix : <http://ld.kinexis.com/ctx/cbe/v1/cbe#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://ld.kinexis.com/vocab/cbe/v1/cbe> .
+
+<http://ld.kinexis.com/vocab/cbe/v1/cbe> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#assessment
+
+:assessment rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#calculation_method
+
+:calculation_method rdf:type owl:ObjectProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#competency
+
+:competency rdf:type owl:ObjectProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#course_competency_map
+
+:course_competency_map rdf:type owl:ObjectProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#course_offering
+
+:course_offering rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:range :Competency ;
+                 
+                 rdfs:domain :CourseCompetencyMap ;
+                 
+                 rdfs:range :CourseOffering .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#course_section
+
+:course_section rdf:type owl:ObjectProperty ;
+                
+                rdfs:domain :CourseOffering ;
+                
+                rdfs:range :CourseSection .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion
+
+:criterion rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :Competency .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion_score
+
+:criterion_score rdf:type owl:ObjectProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#performanceL_level
+
+:performanceL_level rdf:type owl:ObjectProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#person
+
+:person rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :CourseSection ;
+        
+        rdfs:range :User .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#program
+
+:program rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Program .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#rubric
+
+:rubric rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :Competency ;
+        
+        rdfs:range :Rubric .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#term
+
+:term rdf:type owl:ObjectProperty ;
+      
+      rdfs:domain :CourseSection ;
+      
+      rdfs:range :Term .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#user
+
+:user rdf:type owl:ObjectProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#work_product
+
+:work_product rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :CompetencyScore ;
+              
+              rdfs:range :WorkProduct .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#aggregate
+
+:aggregate rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#attempt
+
+:attempt rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#completion_date
+
+:completion_date rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#computed_score
+
+:computed_score rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion
+
+:criterion rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion_performance
+
+:criterion_performance rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion_position
+
+:criterion_position rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion_text
+
+:criterion_text rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#criterion_weight
+
+:criterion_weight rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#degree_level
+
+:degree_level rdf:type owl:DatatypeProperty ;
+              
+              rdfs:range rdfs:Literal .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#description
+
+:description rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#display
+
+:display rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#email
+
+:email rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#end_date
+
+:end_date rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#explanation_for_override
+
+:explanation_for_override rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#external_id
+
+:external_id rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#faculty_judgment
+
+:faculty_judgment rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#faculty_name
+
+:faculty_name rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#feedback
+
+:feedback rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#final_score
+
+:final_score rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#first_name
+
+:first_name rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#full_name
+
+:full_name rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#grade
+
+:grade rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#label
+
+:label rdf:type owl:DatatypeProperty ;
+       
+       rdfs:range rdfs:Literal .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#last_name
+
+:last_name rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#legal_name
+
+:legal_name rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#method
+
+:method rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#numeric_score
+
+:numeric_score rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#overall_feedback
+
+:overall_feedback rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#raw_score
+
+:raw_score rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#reference_hierarchy_level
+
+:reference_hierarchy_level rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#scoring_method
+
+:scoring_method rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#sequence_number
+
+:sequence_number rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#start_date
+
+:start_date rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#start_of_level
+
+:start_of_level rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#statement
+
+:statement rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#strength
+
+:strength rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#timestamp
+
+:timestamp rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#title
+
+:title rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#type
+
+:type rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#website
+
+:website rdf:type owl:DatatypeProperty .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#workproduct_url
+
+:workproduct_url rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#AchievementLevel
+
+:AchievementLevel rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty :start_of_level ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:integer
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :label ;
+                                    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                  ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Assessment
+
+:Assessment rdf:type owl:Class ;
+            
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :work_product ;
+                              owl:onClass :WorkProduct ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :description ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :scoring_method ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :type ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :title ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#CalculationMethod
+
+:CalculationMethod rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty :criterion ;
+                                     owl:onClass :Criterion ;
+                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :method ;
+                                     owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                   ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Competency
+
+:Competency rdf:type owl:Class ;
+            
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :competency ;
+                              owl:someValuesFrom :Competency
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :criterion ;
+                              owl:someValuesFrom :Criterion
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :aggregate ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :statement ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :display ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :label ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :reference_hierarchy_level ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :calculation_method ;
+                              owl:onClass :CalculationMethod ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#CompetencyScore
+
+:CompetencyScore rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty :final_score ;
+                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:decimal
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :completion_date ;
+                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:date
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :computed_score ;
+                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:decimal
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :explanation_for_override ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :criterion_score ;
+                                   owl:onClass :CriterionScore ;
+                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :start_date ;
+                                   owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:date
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :criterion_performance ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#CourseCompetencyMap
+
+:CourseCompetencyMap rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty :course_offering ;
+                                       owl:someValuesFrom :Competency
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :sequence_number ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:integer
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :course_offering ;
+                                       owl:someValuesFrom :CourseOffering
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :strength ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:integer
+                                     ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#CourseOffering
+
+:CourseOffering rdf:type owl:Class ;
+                
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :label ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :title ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :course_section ;
+                                  owl:someValuesFrom :CourseSection
+                                ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#CourseSection
+
+:CourseSection rdf:type owl:Class ;
+               
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :label ;
+                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :term ;
+                                 owl:onClass :Term ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :title ;
+                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                               ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Criterion
+
+:Criterion rdf:type owl:Class ;
+           
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :rubric ;
+                             owl:onClass :Rubric ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :competency ;
+                             owl:onClass :Competency ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :criterion_text ;
+                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                           ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#CriterionScore
+
+:CriterionScore rdf:type owl:Class ;
+                
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :user ;
+                                  owl:onClass :User ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :criterion ;
+                                  owl:onClass :Criterion ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :faculty_judgment ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :competency ;
+                                  owl:onClass :Competency ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :feedback ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :attempt ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:integer
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :timestamp ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:date
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :numeric_score ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:integer
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :faculty_name ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :course_section ;
+                                  owl:onClass :CourseSection ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Offering
+
+:Offering rdf:type owl:Class ;
+          
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :description ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :end_date ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:date
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :start_date ;
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:date
+                          ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Organization
+
+:Organization rdf:type owl:Class ;
+              
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :description ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :legal_name ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :website ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :label ;
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                              ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Program
+
+:Program rdf:type owl:Class ;
+         
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :course_competency_map ;
+                           owl:someValuesFrom :CourseCompetencyMap
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :label ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :degree_level ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Rubric
+
+:Rubric rdf:type owl:Class ;
+        
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :criterion_weight ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:decimal
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :assessment ;
+                          owl:onClass :Assessment ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :criterion ;
+                          owl:onClass :Criterion ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :criterion_position ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:integer
+                        ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#Term
+
+:Term rdf:type owl:Class ;
+      
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :description ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :end_date ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onDataRange xsd:date
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :start_date ;
+                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onDataRange xsd:date
+                      ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#User
+
+:User rdf:type owl:Class ;
+      
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :full_name ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :external_id ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :first_name ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :email ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :last_name ;
+                        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                      ] .
+
+
+
+###  http://ld.kinexis.com/ctx/cbe/v1/cbe#WorkProduct
+
+:WorkProduct rdf:type owl:Class ;
+             
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :overall_feedback ;
+                               owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :user ;
+                               owl:onClass :User ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :attempt ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:integer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :grade ;
+                               owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :course_section ;
+                               owl:onClass :CourseSection ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :faculty_name ;
+                               owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :assessment ;
+                               owl:onClass :Assessment ;
+                               owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :workproduct_url ;
+                               owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                             ] .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+

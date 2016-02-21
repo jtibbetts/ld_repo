@@ -1,0 +1,15 @@
+{
+  "@context": {
+      "hydra": "http://www.w3.org/ns/hydra/core#",
+      "vocab": "http://ld.kinexis.com/vocab/cbe/v1/cbe#",
+      "User": "vocab:User",
+      "givenName": {
+          "@id": "vocab:User/givenName",
+          "@type": "@id"
+      },
+      "name": {
+          "@id": "vocab:User/name",
+          "@type": "@id"
+      }
+  }
+}
