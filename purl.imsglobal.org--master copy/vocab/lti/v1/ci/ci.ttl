@@ -1,0 +1,348 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix ci: <http://ld.kinexis.com/vocab/lti/v1/ci#> .
+@prefix lti: <http://ld.kinexis.com/vocab/lti/v2/lti#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bind: <http://purl.org/semantictools/v1/vocab/bind#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann#> .
+@base <http://ld.kinexis.com/vocab/lti/v1/ci#> .
+
+<http://ld.kinexis.com/vocab/lti/v1/ci#> rdf:type owl:Ontology ;
+                                                       
+                                                       rdfs:label "Content-Item Message" ;
+                                                       
+                                                       bind:suggestedPrefix "ci" .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#icon
+
+ci:icon rdf:type owl:ObjectProperty ;
+        
+        rdfs:comment "An image which may be used as an icon for the content-item." ;
+        
+        rdfs:domain ci:ContentItem ;
+        
+        rdfs:range ci:Image .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#placementOf
+
+ci:placementOf rdf:type owl:ObjectProperty ;
+               
+               rdfs:comment "The content-item to be placed." ;
+               
+               rdfs:range ci:ContentItem ;
+               
+               rdfs:domain ci:ContentItemPlacement .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#presentation_document_target
+
+ci:presentation_document_target rdf:type owl:ObjectProperty ;
+                                
+                                rdfs:comment "The intended destination where the content-item is displayed to users.  The value is taken from a list of permitted targets." ;
+                                
+                                rdfs:domain ci:ContentItemPlacement ;
+                                
+                                rdfs:range lti:DocumentTarget .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#thumbnail
+
+ci:thumbnail rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "An image which may be used as a thumbnail for the content-item." ;
+             
+             rdfs:domain ci:ContentItem ;
+             
+             rdfs:range ci:Image .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#copyAdvice
+
+ci:copyAdvice rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain ci:FileItem ;
+              
+              rdfs:range xsd:boolean .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#displayHeight
+
+ci:displayHeight rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:comment "The height in pixels of the display area." ;
+                 
+                 rdfs:domain ci:ContentItemPlacement ;
+                 
+                 rdfs:range xsd:integer .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#displayWidth
+
+ci:displayWidth rdf:type owl:DatatypeProperty ;
+                
+                rdfs:comment "The width in pixels of the display area." ;
+                
+                rdfs:domain ci:ContentItemPlacement ;
+                
+                rdfs:range xsd:integer .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#expiresAt
+
+ci:expiresAt rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain ci:FileItem ;
+             
+             rdfs:range xsd:dateTime .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#height
+
+ci:height rdf:type owl:DatatypeProperty ;
+          
+          rdfs:comment "The height in pixels of the image." ;
+          
+          rdfs:domain ci:Image ;
+          
+          rdfs:range xsd:integer .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#mediaType
+
+ci:mediaType rdf:type owl:DatatypeProperty ;
+             
+             rdfs:comment "The MIME type of the content-item." ;
+             
+             rdfs:domain ci:ContentItem ;
+             
+             rdfs:range xsd:normalizedString .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#text
+
+ci:text rdf:type owl:DatatypeProperty ;
+        
+        rdfs:comment "A plain text description of the content-item." ;
+        
+        rdfs:domain ci:ContentItem ;
+        
+        rdfs:range xsd:string .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#title
+
+ci:title rdf:type owl:DatatypeProperty ;
+         
+         rdfs:comment "A plain text title of the content-item." ;
+         
+         rdfs:domain ci:ContentItem ;
+         
+         rdfs:range xsd:normalizedString .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#width
+
+ci:width rdf:type owl:DatatypeProperty ;
+         
+         rdfs:comment "The width in pixels of the image." ;
+         
+         rdfs:domain ci:Image ;
+         
+         rdfs:range xsd:integer .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#windowTarget
+
+ci:windowTarget rdf:type owl:DatatypeProperty ;
+                
+                rdfs:comment "The value for the <code>target</code> attribute of any anchor tag which is used to make the content-item available to users." ;
+                
+                rdfs:domain ci:ContentItemPlacement ;
+                
+                rdfs:range xsd:normalizedString .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#ContentItem
+
+ci:ContentItem rdf:type owl:Class ;
+               
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty ci:title ;
+                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ci:icon ;
+                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ci:thumbnail ;
+                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ci:text ;
+                                 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ci:mediaType ;
+                                 owl:minCardinality "1"^^xsd:nonNegativeInteger
+                               ] .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#ContentItemPlacement
+
+ci:ContentItemPlacement rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                          owl:onProperty ci:displayWidth ;
+                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ci:placementOf ;
+                                          owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ci:windowTarget ;
+                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ci:presentation_document_target ;
+                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ci:displayHeight ;
+                                          owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                        ] .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#FileItem
+
+ci:FileItem rdf:type owl:Class ;
+            
+            rdfs:subClassOf ci:ContentItem ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ci:expiresAt ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ci:copyAdvice ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#Image
+
+ci:Image rdf:type owl:Class ;
+         
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty ci:height ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty ci:width ;
+                           owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                         ] .
+
+
+
+###  http://ld.kinexis.com/vocab/lti/v2/lti#DocumentTarget
+
+lti:DocumentTarget rdf:type owl:Class .
+
+
+
+###  http://purl.org/semantictools/v1/vocab/bind#TargetNamespace
+
+bind:TargetNamespace rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://ld.kinexis.com/vocab/lti/v1/ci#
+
+<http://ld.kinexis.com/vocab/lti/v1/ci#> rdf:type bind:TargetNamespace ,
+                                                                owl:NamedIndividual .
+
+
+
+[ rdfs:comment "A plain text description of the content-item."
+] .
+[ rdfs:comment "An image which may be used as a thumbnail for the content-item."
+] .
+[ rdfs:comment "The width in pixels of the image."
+] .
+[ rdfs:comment "The height in pixels of the image."
+] .
+[ rdfs:comment "An image which may be used as an icon for the content-item."
+] .
+[ rdfs:comment "The width in pixels of the display area."
+] .
+[ rdfs:comment "The height in pixels of the display area."
+] .
+[ rdfs:comment "The value for the <code>target</code> attribute of any anchor tag which is used to make the content-item available to users."
+] .
+[ rdfs:comment "The content-item to be placed."
+] .
+[ rdfs:comment "The intended destination where the content-item is displayed to users.  The value is taken from a list of permitted targets."
+] .
+[ rdfs:comment "The MIME type of the content-item."
+] .
+[ rdfs:comment "A plain text title of the content-item."
+] .
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+

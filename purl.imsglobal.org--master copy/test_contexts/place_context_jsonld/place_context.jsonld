@@ -1,0 +1,11 @@
+{
+    "@context": {
+        "description": "http://schema.org/description",
+        "image": {
+            "@id": "http://schema.org/image",
+            "@type": "@id"
+        },
+        "name": "http://schema.org/name"
+    },
+	"name": "John"
+}

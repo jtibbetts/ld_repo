@@ -1,0 +1,41 @@
+@prefix exp: <http://ld.kinexis.com/vocab/caliper/v1/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
+@prefix liso: <http://ld.kinexis.com/vocab/lis/v2/outcomes#> .
+@prefix lisp: <http://ld.kinexis.com/vocab/lis/v2/pm#> .
+@prefix lti: <http://ld.kinexis.com/vocab/lti/v2/lti#> .
+@prefix lti-type: <http://ld.kinexis.com/xsd/lti/v2/ltid#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix res: <http://ld.kinexis.com/ctx/lis/v2p1/Result#> .
+
+<http://lms.example.com/sections/2923/gradebook/items/1> a liso:LineItem ;
+	liso:assignedActivity <http://toolprovider.example.com/assessment/66400> ;
+	liso:lineItemOf <http://lms.example.com/resources/Context/2272> ;
+	liso:reportingMethod res:totalScore ;
+	liso:result <http://server.example.com/sections/2923/gradebook/items/1/results/43> , <http://server.example.com/sections/2923/gradebook/items/1/results/44> ;
+	liso:scoreConstraints _:b0 ;
+	rdfs:label "Chapter 5 Test"^^xs:string .
+
+<http://toolprovider.example.com/assessment/66400> exp:activity_id "a-9334df-33"^^xs:normalizedString .
+
+<http://lms.example.com/resources/Context/2272> lti:context_id "123-abc"^^xs:normalizedString .
+
+<http://server.example.com/sections/2923/gradebook/items/1/results/43> liso:comment "Nice work!"^^lti-type:DataValue.Type ;
+	liso:extraCreditScore "3"^^xs:decimal ;
+	liso:normalScore "85"^^xs:decimal ;
+	liso:penaltyScore "0"^^xs:decimal ;
+	liso:resultAgent "http://server.example.com/persons/54062"^^foaf:Agent ;
+	liso:totalScore "88"^^xs:decimal .
+
+<http://server.example.com/sections/2923/gradebook/items/1/results/44> liso:comment "Please come see me"^^lti-type:DataValue.Type ;
+	liso:extraCreditScore "0"^^xs:decimal ;
+	liso:normalScore "52"^^xs:decimal ;
+	liso:penaltyScore "10"^^xs:decimal ;
+	liso:resultAgent "http://server.example.com/persons/72003"^^foaf:Agent ;
+	liso:totalScore "42"^^xs:decimal .
+
+_:b0 a liso:NumericLimits ;
+	liso:extraCreditMaximum "10"^^xs:float ;
+	liso:normalMaximum "100"^^xs:float ;
+	liso:totalMaximum "110"^^xs:float .

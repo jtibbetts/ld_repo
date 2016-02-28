@@ -1,9 +1,0 @@
-{
-  "@context": ["http://ld.kinexis.com/vocab/cbe/v1/cbe",
-  {
-    "@vocab": "http://ld.kinexis.com/vocab/cbe/v1/cbe#",
-	"hydra": "http://ld.kinexis.com/ctx/cbe/v1/record_of_performance/hydra/hydra.jsonld",
-    "schema": "http://schema.org/",
-	"lti" : "http://ld.kinexis.com/vocab/lti/v2/lti#"
-  }]
-}

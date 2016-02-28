@@ -1,0 +1,63 @@
+@prefix lism: <http://purl.imsglobal.org/vocab/lis/v2/mm#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bind: <http://purl.org/semantictools/v1/vocab/bind#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+<http://purl.imsglobal.org/vocab/lis/v2/mm#> a owl:Ontology  ;
+  rdfs:label "LIS Membership Management" ;
+  a bind:TargetNamespace ;
+  bind:suggestedPrefix "lism" .
+
+lism:LISMembershipContainer rdf:type owl:Class ;
+  rdfs:subClassOf ldp:Container ,
+  [ a owl:Restriction ;
+    owl:onProperty      ldp:membershipPredicate;
+    owl:hasValue org:membership
+  ] ,
+  [ a owl:Restriction ;
+    owl:onProperty      ldp:membershipSubject;
+    owl:allValuesFrom  org:Organization
+  ] ; 
+  rdfs:comment "A container that holds a collection of Membership resources." .
+
+lism:LISRole rdf:type rdf:Property, org:Role ;
+  rdfs:comment "A Role that is also a Property whose domain is restricted to the Organization class and whose range is restricted to the Person class." .
+
+lism:Learner rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:LISRole .
+
+lism:Instructor rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:LISRole .
+
+lism:TeachingAssistant rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:LISRole .
+
+lism:NonCreditLearner rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Learner .
+
+lism:GuestLearner rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Learner .
+
+lism:ExternalLearner rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Learner .
+
+lism:PrimaryInstructor rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Instructor .
+
+lism:SecondaryInstructor rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Instructor .
+
+lism:Lecturer rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Instructor .
+
+lism:GuestInstructor rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Instructor .
+
+lism:ExternalInstructor rdf:type rdf:Property ;
+  rdfs:subPropertyOf lism:Instructor .
+

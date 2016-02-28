@@ -1,0 +1,1316 @@
+{
+    "@context" : {
+    "lti" : "http://purl.imsglobal.org/vocab/lti/v2/lti#",
+    "lti-type" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#",
+    "ltic" : "http://purl.imsglobal.org/vocab/lti/v2/capability#",
+    "ltiv" : "http://purl.imsglobal.org/vocab/lti/v2/variable#",
+    "owl" : "http://www.w3.org/2002/07/owl#",
+    "xs" : "http://www.w3.org/2001/XMLSchema#",
+    "BaseUrlChoice" : {
+      "@id" : "lti:BaseUrlChoice",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#selector",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#secure_base_url",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#default_base_url",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "BaseUrlSelector" : {
+      "@id" : "lti:BaseUrlSelector",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#applies_to",
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Capability" : {
+      "@id" : "lti:Capability",
+      "class" : {}
+
+    },
+    "Class" : "owl:Class",
+    "Contact" : {
+      "@id" : "lti:Contact",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#email",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "DataValue.Type" : {
+      "@id" : "lti-type:DataValue.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#string",
+        "maxLength" : 4096
+      }
+    },
+    "GUID.Type" : {
+      "@id" : "lti-type:GUID.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#NCName",
+        "maxLength" : 4096,
+        "pattern" : "\\S*"
+      }
+    },
+    "HttpMethod" : {
+      "@id" : "lti:HttpMethod",
+      "class" : {}
+
+    },
+    "IconEndpoint" : {
+      "@id" : "lti:IconEndpoint",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Endpoint"
+        ]
+      }
+    },
+    "IconInfo" : {
+      "@id" : "lti:IconInfo",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#default_location",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#key",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#Name.Type"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#icon_style"
+          }
+        ]
+      }
+    },
+    "IconStyle" : {
+      "@id" : "lti:IconStyle",
+      "class" : {}
+
+    },
+    "LocalizedName" : {
+      "@id" : "lti:LocalizedName",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#key",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#Name.Type"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#default_value",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#LongName.Type"
+          }
+        ]
+      }
+    },
+    "LocalizedText" : {
+      "@id" : "lti:LocalizedText",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#key",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#Name.Type"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#default_value",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#Text.Type"
+          }
+        ]
+      }
+    },
+    "LongName.Type" : {
+      "@id" : "lti-type:LongName.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#normalizedString",
+        "maxLength" : 128
+      }
+    },
+    "MessageHandler" : {
+      "@id" : "lti:MessageHandler",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Endpoint"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#enabled_capability",
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Capability"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#message_type",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#parameter"
+          }
+        ]
+      }
+    },
+    "MessageType" : {
+      "@id" : "lti:MessageType",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Capability"
+        ]
+      }
+    },
+    "Name.Type" : {
+      "@id" : "lti-type:Name.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#NCName",
+        "maxLength" : 64,
+        "pattern" : "\\S*"
+      }
+    },
+    "Parameter" : {
+      "@id" : "lti:Parameter",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#variable",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#name",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#fixed",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ProductFamily" : {
+      "@id" : "lti:ProductFamily",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#HasCode"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#vendor",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ProductInfo" : {
+      "@id" : "lti:ProductInfo",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#product_name",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#product_family",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#technical_description",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#description",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#product_version",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ProductInstance" : {
+      "@id" : "lti:ProductInstance",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#guid",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#GUID.Type"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#service_owner",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#service_provider",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#product_info",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#support",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Contact"
+          }
+        ]
+      }
+    },
+    "PropertyMap" : {
+      "@id" : "lti:PropertyMap",
+      "class" : {}
+
+    },
+    "ResourceHandler" : {
+      "@id" : "lti:ResourceHandler",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#description",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#resource_type",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#icon_info"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#message",
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#MessageHandler"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#resource_name",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ResourceType" : {
+      "@id" : "lti:ResourceType",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#HasCode"
+        ]
+      }
+    },
+    "RestService" : {
+      "@id" : "lti:RestService",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceDescriptor"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#format",
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#endpoint",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#action",
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#HttpMethod"
+          }
+        ]
+      }
+    },
+    "RestServiceProfile" : {
+      "@id" : "lti:RestServiceProfile",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProfile"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#action",
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#HttpMethod"
+          }
+        ]
+      }
+    },
+    "SecurityContract" : {
+      "@id" : "lti:SecurityContract",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#tool_service"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#shared_secret",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#end_user_service"
+          }
+        ]
+      }
+    },
+    "ServiceDescriptor" : {
+      "@id" : "lti:ServiceDescriptor",
+      "class" : {}
+
+    },
+    "ServiceOwner" : {
+      "@id" : "lti:ServiceOwner",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#timestamp",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://www.w3.org/2001/XMLSchema#dateTime"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#description",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#service_owner_name",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ServiceProfile" : {
+      "@id" : "lti:ServiceProfile",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#service",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ServiceProvider" : {
+      "@id" : "lti:ServiceProvider",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#guid",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#GUID.Type"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#timestamp",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://www.w3.org/2001/XMLSchema#dateTime"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#service_provider_name",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#description",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#support",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Contact"
+          }
+        ]
+      }
+    },
+    "Text.Type" : {
+      "@id" : "lti-type:Text.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#string",
+        "maxLength" : 1024
+      }
+    },
+    "Token.Type" : {
+      "@id" : "lti-type:Token.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#token",
+        "maxLength" : 64,
+        "pattern" : "\\S*"
+      }
+    },
+    "ToolConsumerProfile" : {
+      "@id" : "lti:ToolConsumerProfile",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductProfile"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#guid",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#GUID.Type"
+          }
+        ]
+      }
+    },
+    "ToolProfile" : {
+      "@id" : "lti:ToolProfile",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductProfile"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#base_url_choice",
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#resource_handler"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#message",
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#MessageHandler"
+          }
+        ]
+      }
+    },
+    "ToolProxy" : {
+      "@id" : "lti:ToolProxy",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolSettingsContainer"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#enabled_capability",
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Capability"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#tool_proxy_guid",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#tool_profile",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#lti_version",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://www.w3.org/2001/XMLSchema#token"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#tool_consumer_profile",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#security_contract",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "VariableName.Type" : {
+      "@id" : "lti-type:VariableName.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#normalizedString",
+        "maxLength" : 128,
+        "pattern" : "\\S*"
+      }
+    },
+    "Vendor" : {
+      "@id" : "lti:Vendor",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#HasCode"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#timestamp",
+            "maxCardinality" : 1,
+            "minCardinality" : 1,
+            "allValuesFrom" : "http://www.w3.org/2001/XMLSchema#dateTime"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#contact",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#vendor_name",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#website",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#description",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText"
+          }
+        ]
+      }
+    },
+    "action" : {
+      "@id" : "lti:action",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#RestServiceProfile",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#RestService"
+        ]
+      }
+    },
+    "applies_to" : {
+      "@id" : "lti:applies_to",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#BaseUrlSelector"
+        ]
+      }
+    },
+    "base_url_choice" : {
+      "@id" : "lti:base_url_choice",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#BaseUrlChoice",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProfile"
+        ]
+      }
+    },
+    "code" : {
+      "@id" : "lti:code",
+      "@type" : "lti-type:Token.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#HasCode"
+        ]
+      }
+    },
+    "contact" : {
+      "@id" : "lti:contact",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Contact",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Vendor"
+        ]
+      }
+    },
+    "custom" : {
+      "@id" : "lti:custom",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#PropertyMap",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "default_base_url" : {
+      "@id" : "lti:default_base_url",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#BaseUrlChoice"
+        ]
+      }
+    },
+    "default_location" : {
+      "@id" : "lti:default_location",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#IconEndpoint",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#IconInfo"
+        ]
+      }
+    },
+    "default_value" : {
+      "@id" : "lti:default_value",
+      "@type" : "lti-type:Text.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ShortLocalizedName"
+        ]
+      }
+    },
+    "description" : {
+      "@id" : "lti:description",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProvider",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInfo",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceHandler",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Vendor",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceOwner"
+        ]
+      }
+    },
+    "email" : {
+      "@id" : "lti:email",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Contact"
+        ]
+      }
+    },
+    "enabled_capability" : {
+      "@id" : "lti:enabled_capability",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#MessageHandler",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "end_user_service" : {
+      "@id" : "lti:end_user_service",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProfile",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#SecurityContract"
+        ]
+      }
+    },
+    "endpoint" : {
+      "@id" : "lti:endpoint",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#RestService"
+        ]
+      }
+    },
+    "fixed" : {
+      "@id" : "lti:fixed",
+      "@type" : "lti-type:DataValue.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Parameter"
+        ]
+      }
+    },
+    "format" : {
+      "@id" : "lti:format",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#RestService"
+        ]
+      }
+    },
+    "guid" : {
+      "@id" : "lti:guid",
+      "@type" : "lti-type:GUID.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProvider",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolConsumerProfile",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInstance"
+        ]
+      }
+    },
+    "icon_info" : {
+      "@id" : "lti:icon_info",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#IconInfo",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceHandler"
+        ]
+      }
+    },
+    "icon_style" : {
+      "@id" : "lti:icon_style",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#IconInfo"
+        ]
+      }
+    },
+    "key" : {
+      "@id" : "lti:key",
+      "@type" : "lti-type:Name.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#IconInfo",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ShortLocalizedName"
+        ]
+      }
+    },
+    "lti_version" : {
+      "@id" : "lti:lti_version",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductProfile",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "message" : {
+      "@id" : "lti:message",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#MessageHandler",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProfile",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceHandler"
+        ]
+      }
+    },
+    "message_type" : {
+      "@id" : "lti:message_type",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#MessageHandler"
+        ]
+      }
+    },
+    "name" : {
+      "@id" : "lti:name",
+      "@type" : "xs:Name",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Parameter"
+        ]
+      }
+    },
+    "parameter" : {
+      "@id" : "lti:parameter",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Parameter",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#MessageHandler"
+        ]
+      }
+    },
+    "path" : {
+      "@id" : "lti:path",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Endpoint"
+        ]
+      }
+    },
+    "product_family" : {
+      "@id" : "lti:product_family",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductFamily",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInfo"
+        ]
+      }
+    },
+    "product_info" : {
+      "@id" : "lti:product_info",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInfo",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInstance"
+        ]
+      }
+    },
+    "product_instance" : {
+      "@id" : "lti:product_instance",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInstance",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductProfile"
+        ]
+      }
+    },
+    "product_name" : {
+      "@id" : "lti:product_name",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInfo"
+        ]
+      }
+    },
+    "product_version" : {
+      "@id" : "lti:product_version",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInfo"
+        ]
+      }
+    },
+    "resource_handler" : {
+      "@id" : "lti:resource_handler",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceHandler",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProfile"
+        ]
+      }
+    },
+    "resource_name" : {
+      "@id" : "lti:resource_name",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceHandler"
+        ]
+      }
+    },
+    "resource_type" : {
+      "@id" : "lti:resource_type",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceType",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ResourceHandler"
+        ]
+      }
+    },
+    "secure_base_url" : {
+      "@id" : "lti:secure_base_url",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#BaseUrlChoice"
+        ]
+      }
+    },
+    "security_contract" : {
+      "@id" : "lti:security_contract",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#SecurityContract",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "selector" : {
+      "@id" : "lti:selector",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#BaseUrlSelector",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#BaseUrlChoice"
+        ]
+      }
+    },
+    "service" : {
+      "@id" : "lti:service",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProfile"
+        ]
+      }
+    },
+    "service_offered" : {
+      "@id" : "lti:service_offered",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceDescriptor",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductProfile"
+        ]
+      }
+    },
+    "service_owner" : {
+      "@id" : "lti:service_owner",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceOwner",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInstance"
+        ]
+      }
+    },
+    "service_owner_name" : {
+      "@id" : "lti:service_owner_name",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceOwner"
+        ]
+      }
+    },
+    "service_provider" : {
+      "@id" : "lti:service_provider",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProvider",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInstance"
+        ]
+      }
+    },
+    "service_provider_name" : {
+      "@id" : "lti:service_provider_name",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProvider"
+        ]
+      }
+    },
+    "shared_secret" : {
+      "@id" : "lti:shared_secret",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#SecurityContract"
+        ]
+      }
+    },
+    "support" : {
+      "@id" : "lti:support",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Contact",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProvider",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInstance"
+        ]
+      }
+    },
+    "technical_description" : {
+      "@id" : "lti:technical_description",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedText",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductInfo"
+        ]
+      }
+    },
+    "timestamp" : {
+      "@id" : "lti:timestamp",
+      "@type" : "xs:dateTime",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProvider",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Vendor",
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceOwner"
+        ]
+      }
+    },
+    "tool_consumer_profile" : {
+      "@id" : "lti:tool_consumer_profile",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "tool_profile" : {
+      "@id" : "lti:tool_profile",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProfile",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "tool_proxy_guid" : {
+      "@id" : "lti:tool_proxy_guid",
+      "@type" : "lti-type:GUID.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxy"
+        ]
+      }
+    },
+    "tool_service" : {
+      "@id" : "lti:tool_service",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ServiceProfile",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#SecurityContract"
+        ]
+      }
+    },
+    "variable" : {
+      "@id" : "lti:variable",
+      "@type" : "lti-type:VariableName.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Parameter"
+        ]
+      }
+    },
+    "vendor" : {
+      "@id" : "lti:vendor",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Vendor",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductFamily"
+        ]
+      }
+    },
+    "vendor_name" : {
+      "@id" : "lti:vendor_name",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LocalizedName",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Vendor"
+        ]
+      }
+    },
+    "website" : {
+      "@id" : "lti:website",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Vendor"
+        ]
+      }
+    },
+    "Context.id" : "ltiv:Context.id",
+    "Context.label" : "ltiv:Context.label",
+    "Context.org" : "ltiv:Context.org",
+    "Context.title" : "ltiv:Context.title",
+    "Context.type" : "ltiv:Context.type",
+    "CourseOffering.academicSession" : "ltiv:CourseOffering.academicSession",
+    "CourseOffering.credits" : "ltiv:CourseOffering.credits",
+    "CourseOffering.label" : "ltiv:CourseOffering.label",
+    "CourseOffering.longDescription" : "ltiv:CourseOffering.longDescription",
+    "CourseOffering.shortDescription" : "ltiv:CourseOffering.shortDescription",
+    "CourseOffering.sourcedId" : "ltiv:CourseOffering.sourcedId",
+    "CourseOffering.title" : "ltiv:CourseOffering.title",
+    "CourseSection.courseNumber" : "ltiv:CourseSection.courseNumber",
+    "CourseSection.credits" : "ltiv:CourseSection.credits",
+    "CourseSection.dataSource" : "ltiv:CourseSection.dataSource",
+    "CourseSection.dept" : "ltiv:CourseSection.dept",
+    "CourseSection.enrollControl.allowed" : "ltiv:CourseSection.enrollControl.allowed",
+    "CourseSection.enrollControll.accept" : "ltiv:CourseSection.enrollControll.accept",
+    "CourseSection.label" : "ltiv:CourseSection.label",
+    "CourseSection.longDescription" : "ltiv:CourseSection.longDescription",
+    "CourseSection.maxNumberofStudents" : "ltiv:CourseSection.maxNumberofStudents",
+    "CourseSection.numberofStudents" : "ltiv:CourseSection.numberofStudents",
+    "CourseSection.shortDescription" : "ltiv:CourseSection.shortDescription",
+    "CourseSection.sourceSectionId" : "ltiv:CourseSection.sourceSectionId",
+    "CourseSection.sourcedId" : "ltiv:CourseSection.sourcedId",
+    "CourseSection.timeFrame.begin" : "ltiv:CourseSection.timeFrame.begin",
+    "CourseSection.timeFrame.end" : "ltiv:CourseSection.timeFrame.end",
+    "CourseSection.title" : "ltiv:CourseSection.title",
+    "CourseTemplate.courseNumber" : "ltiv:CourseTemplate.courseNumber",
+    "CourseTemplate.credits" : "ltiv:CourseTemplate.credits",
+    "CourseTemplate.label" : "ltiv:CourseTemplate.label",
+    "CourseTemplate.longDescription" : "ltiv:CourseTemplate.longDescription",
+    "CourseTemplate.shortDescription" : "ltiv:CourseTemplate.shortDescription",
+    "CourseTemplate.sourcedId" : "ltiv:CourseTemplate.sourcedId",
+    "CourseTemplate.title" : "ltiv:CourseTemplate.title",
+    "DELETE" : "http://purl.imsglobal.org/vocab/lti/v2/lti#DELETE",
+    "GET" : "http://purl.imsglobal.org/vocab/lti/v2/lti#GET",
+    "Group.email" : "ltiv:Group.email",
+    "Group.enrollControl.accept" : "ltiv:Group.enrollControl.accept",
+    "Group.enrollControl.allowed" : "ltiv:Group.enrollControl.allowed",
+    "Group.grouptype" : "ltiv:Group.grouptype",
+    "Group.longDescription" : "ltiv:Group.longDescription",
+    "Group.parentId" : "ltiv:Group.parentId",
+    "Group.shortDescription" : "ltiv:Group.shortDescription",
+    "Group.sourcedId" : "ltiv:Group.sourcedId",
+    "Group.timeFrame.begin" : "ltiv:Group.timeFrame.begin",
+    "Group.timeFrame.end" : "ltiv:Group.timeFrame.end",
+    "Group.url" : "ltiv:Group.url",
+    "LineItemZZZ.dataSource" : "ltiv:LineItemZZZ.dataSource",
+    "LineItemZZZ.resultValue.max" : "ltiv:LineItemZZZ.resultValue.max",
+    "LineItemZZZ.sourcedId" : "ltiv:LineItemZZZ.sourcedId",
+    "LineItemZZZ.type" : "ltiv:LineItemZZZ.type",
+    "LineItemZZZ.type.displayName" : "ltiv:LineItemZZZ.type.displayName",
+    "LtiLink.custom.url" : "ltiv:LtiLink.custom.url",
+    "Membership.collectionSourcedId" : "ltiv:Membership.collectionSourcedId",
+    "Membership.createdTimestamp" : "ltiv:Membership.createdTimestamp",
+    "Membership.dataSource" : "ltiv:Membership.dataSource",
+    "Membership.personSourcedId" : "ltiv:Membership.personSourcedId",
+    "Membership.role" : "ltiv:Membership.role",
+    "Membership.sourcedId" : "ltiv:Membership.sourcedId",
+    "Membership.status" : "ltiv:Membership.status",
+    "POST" : "http://purl.imsglobal.org/vocab/lti/v2/lti#POST",
+    "PUT" : "http://purl.imsglobal.org/vocab/lti/v2/lti#PUT",
+    "Person.address.country" : "ltiv:Person.address.country",
+    "Person.address.locality" : "ltiv:Person.address.locality",
+    "Person.address.postcode" : "ltiv:Person.address.postcode",
+    "Person.address.statepr" : "ltiv:Person.address.statepr",
+    "Person.address.street1" : "ltiv:Person.address.street1",
+    "Person.address.street2" : "ltiv:Person.address.street2",
+    "Person.address.street3" : "ltiv:Person.address.street3",
+    "Person.address.street4" : "ltiv:Person.address.street4",
+    "Person.address.timezone" : "ltiv:Person.address.timezone",
+    "Person.email.personal" : "ltiv:Person.email.personal",
+    "Person.email.primary" : "ltiv:Person.email.primary",
+    "Person.name.family" : "ltiv:Person.name.family",
+    "Person.name.full" : "ltiv:Person.name.full",
+    "Person.name.given" : "ltiv:Person.name.given",
+    "Person.name.middle" : "ltiv:Person.name.middle",
+    "Person.name.prefix" : "ltiv:Person.name.prefix",
+    "Person.name.suffix" : "ltiv:Person.name.suffix",
+    "Person.phone.home" : "ltiv:Person.phone.home",
+    "Person.phone.mobile" : "ltiv:Person.phone.mobile",
+    "Person.phone.primary" : "ltiv:Person.phone.primary",
+    "Person.phone.work" : "ltiv:Person.phone.work",
+    "Person.sms" : "ltiv:Person.sms",
+    "Person.sourcedId" : "ltiv:Person.sourcedId",
+    "Person.webaddress" : "ltiv:Person.webaddress",
+    "ResourceLink.description" : "ltiv:ResourceLink.description",
+    "ResourceLink.id" : "ltiv:ResourceLink.id",
+    "ResourceLink.title" : "ltiv:ResourceLink.title",
+    "Result.autocreate" : "ltic:Result.autocreate",
+    "Result.comment" : "ltiv:Result.comment",
+    "Result.createdTimestamp" : "ltiv:Result.createdTimestamp",
+    "Result.dataSource" : "ltiv:Result.dataSource",
+    "Result.resultScore" : "ltiv:Result.resultScore",
+    "Result.sourcedId" : "ltiv:Result.sourcedId",
+    "Result.status" : "ltiv:Result.status",
+    "Result.url" : "ltiv:Result.url",
+    "ToolProxy.custom.url" : "ltiv:ToolProxy.custom.url",
+    "ToolProxyBinding.custom.url" : "ltiv:ToolProxyBinding.custom.url",
+    "User.id" : "ltiv:User.id",
+    "User.image" : "ltiv:User.image",
+    "User.org" : "ltiv:User.org",
+    "User.scope.mentor" : "ltiv:User.scope.mentor",
+    "User.username" : "ltiv:User.username",
+    "ltic:Result.autocreate" : "ltic:Result.autocreate",
+    "ltiv:Context.id" : "ltiv:Context.id",
+    "ltiv:Context.label" : "ltiv:Context.label",
+    "ltiv:Context.org" : "ltiv:Context.org",
+    "ltiv:Context.title" : "ltiv:Context.title",
+    "ltiv:Context.type" : "ltiv:Context.type",
+    "ltiv:CourseOffering.academicSession" : "ltiv:CourseOffering.academicSession",
+    "ltiv:CourseOffering.credits" : "ltiv:CourseOffering.credits",
+    "ltiv:CourseOffering.label" : "ltiv:CourseOffering.label",
+    "ltiv:CourseOffering.longDescription" : "ltiv:CourseOffering.longDescription",
+    "ltiv:CourseOffering.shortDescription" : "ltiv:CourseOffering.shortDescription",
+    "ltiv:CourseOffering.sourcedId" : "ltiv:CourseOffering.sourcedId",
+    "ltiv:CourseOffering.title" : "ltiv:CourseOffering.title",
+    "ltiv:CourseSection.courseNumber" : "ltiv:CourseSection.courseNumber",
+    "ltiv:CourseSection.credits" : "ltiv:CourseSection.credits",
+    "ltiv:CourseSection.dataSource" : "ltiv:CourseSection.dataSource",
+    "ltiv:CourseSection.dept" : "ltiv:CourseSection.dept",
+    "ltiv:CourseSection.enrollControl.allowed" : "ltiv:CourseSection.enrollControl.allowed",
+    "ltiv:CourseSection.enrollControll.accept" : "ltiv:CourseSection.enrollControll.accept",
+    "ltiv:CourseSection.label" : "ltiv:CourseSection.label",
+    "ltiv:CourseSection.longDescription" : "ltiv:CourseSection.longDescription",
+    "ltiv:CourseSection.maxNumberofStudents" : "ltiv:CourseSection.maxNumberofStudents",
+    "ltiv:CourseSection.numberofStudents" : "ltiv:CourseSection.numberofStudents",
+    "ltiv:CourseSection.shortDescription" : "ltiv:CourseSection.shortDescription",
+    "ltiv:CourseSection.sourceSectionId" : "ltiv:CourseSection.sourceSectionId",
+    "ltiv:CourseSection.sourcedId" : "ltiv:CourseSection.sourcedId",
+    "ltiv:CourseSection.timeFrame.begin" : "ltiv:CourseSection.timeFrame.begin",
+    "ltiv:CourseSection.timeFrame.end" : "ltiv:CourseSection.timeFrame.end",
+    "ltiv:CourseSection.title" : "ltiv:CourseSection.title",
+    "ltiv:CourseTemplate.courseNumber" : "ltiv:CourseTemplate.courseNumber",
+    "ltiv:CourseTemplate.credits" : "ltiv:CourseTemplate.credits",
+    "ltiv:CourseTemplate.label" : "ltiv:CourseTemplate.label",
+    "ltiv:CourseTemplate.longDescription" : "ltiv:CourseTemplate.longDescription",
+    "ltiv:CourseTemplate.shortDescription" : "ltiv:CourseTemplate.shortDescription",
+    "ltiv:CourseTemplate.sourcedId" : "ltiv:CourseTemplate.sourcedId",
+    "ltiv:CourseTemplate.title" : "ltiv:CourseTemplate.title",
+    "ltiv:Group.email" : "ltiv:Group.email",
+    "ltiv:Group.enrollControl.accept" : "ltiv:Group.enrollControl.accept",
+    "ltiv:Group.enrollControl.allowed" : "ltiv:Group.enrollControl.allowed",
+    "ltiv:Group.grouptype" : "ltiv:Group.grouptype",
+    "ltiv:Group.longDescription" : "ltiv:Group.longDescription",
+    "ltiv:Group.parentId" : "ltiv:Group.parentId",
+    "ltiv:Group.shortDescription" : "ltiv:Group.shortDescription",
+    "ltiv:Group.sourcedId" : "ltiv:Group.sourcedId",
+    "ltiv:Group.timeFrame.begin" : "ltiv:Group.timeFrame.begin",
+    "ltiv:Group.timeFrame.end" : "ltiv:Group.timeFrame.end",
+    "ltiv:Group.url" : "ltiv:Group.url",
+    "ltiv:LineItemZZZ.dataSource" : "ltiv:LineItemZZZ.dataSource",
+    "ltiv:LineItemZZZ.resultValue.max" : "ltiv:LineItemZZZ.resultValue.max",
+    "ltiv:LineItemZZZ.sourcedId" : "ltiv:LineItemZZZ.sourcedId",
+    "ltiv:LineItemZZZ.type" : "ltiv:LineItemZZZ.type",
+    "ltiv:LineItemZZZ.type.displayName" : "ltiv:LineItemZZZ.type.displayName",
+    "ltiv:LtiLink.custom.url" : "ltiv:LtiLink.custom.url",
+    "ltiv:Membership.collectionSourcedId" : "ltiv:Membership.collectionSourcedId",
+    "ltiv:Membership.createdTimestamp" : "ltiv:Membership.createdTimestamp",
+    "ltiv:Membership.dataSource" : "ltiv:Membership.dataSource",
+    "ltiv:Membership.personSourcedId" : "ltiv:Membership.personSourcedId",
+    "ltiv:Membership.role" : "ltiv:Membership.role",
+    "ltiv:Membership.sourcedId" : "ltiv:Membership.sourcedId",
+    "ltiv:Membership.status" : "ltiv:Membership.status",
+    "ltiv:Person.address.country" : "ltiv:Person.address.country",
+    "ltiv:Person.address.locality" : "ltiv:Person.address.locality",
+    "ltiv:Person.address.postcode" : "ltiv:Person.address.postcode",
+    "ltiv:Person.address.statepr" : "ltiv:Person.address.statepr",
+    "ltiv:Person.address.street1" : "ltiv:Person.address.street1",
+    "ltiv:Person.address.street2" : "ltiv:Person.address.street2",
+    "ltiv:Person.address.street3" : "ltiv:Person.address.street3",
+    "ltiv:Person.address.street4" : "ltiv:Person.address.street4",
+    "ltiv:Person.address.timezone" : "ltiv:Person.address.timezone",
+    "ltiv:Person.email.personal" : "ltiv:Person.email.personal",
+    "ltiv:Person.email.primary" : "ltiv:Person.email.primary",
+    "ltiv:Person.name.family" : "ltiv:Person.name.family",
+    "ltiv:Person.name.full" : "ltiv:Person.name.full",
+    "ltiv:Person.name.given" : "ltiv:Person.name.given",
+    "ltiv:Person.name.middle" : "ltiv:Person.name.middle",
+    "ltiv:Person.name.prefix" : "ltiv:Person.name.prefix",
+    "ltiv:Person.name.suffix" : "ltiv:Person.name.suffix",
+    "ltiv:Person.phone.home" : "ltiv:Person.phone.home",
+    "ltiv:Person.phone.mobile" : "ltiv:Person.phone.mobile",
+    "ltiv:Person.phone.primary" : "ltiv:Person.phone.primary",
+    "ltiv:Person.phone.work" : "ltiv:Person.phone.work",
+    "ltiv:Person.sms" : "ltiv:Person.sms",
+    "ltiv:Person.sourcedId" : "ltiv:Person.sourcedId",
+    "ltiv:Person.webaddress" : "ltiv:Person.webaddress",
+    "ltiv:ResourceLink.description" : "ltiv:ResourceLink.description",
+    "ltiv:ResourceLink.id" : "ltiv:ResourceLink.id",
+    "ltiv:ResourceLink.title" : "ltiv:ResourceLink.title",
+    "ltiv:Result.comment" : "ltiv:Result.comment",
+    "ltiv:Result.createdTimestamp" : "ltiv:Result.createdTimestamp",
+    "ltiv:Result.dataSource" : "ltiv:Result.dataSource",
+    "ltiv:Result.resultScore" : "ltiv:Result.resultScore",
+    "ltiv:Result.sourcedId" : "ltiv:Result.sourcedId",
+    "ltiv:Result.status" : "ltiv:Result.status",
+    "ltiv:Result.url" : "ltiv:Result.url",
+    "ltiv:ToolProxy.custom.url" : "ltiv:ToolProxy.custom.url",
+    "ltiv:ToolProxyBinding.custom.url" : "ltiv:ToolProxyBinding.custom.url",
+    "ltiv:User.id" : "ltiv:User.id",
+    "ltiv:User.image" : "ltiv:User.image",
+    "ltiv:User.org" : "ltiv:User.org",
+    "ltiv:User.scope.mentor" : "ltiv:User.scope.mentor",
+    "ltiv:User.username" : "ltiv:User.username",
+    "anyURI" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "normalizedString" : "http://www.w3.org/2001/XMLSchema#normalizedString",
+    "Name" : "http://www.w3.org/2001/XMLSchema#Name",
+    "string" : "http://www.w3.org/2001/XMLSchema#string",
+    "dateTime" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "Variable" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/variable#Variable",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Capability"
+        ]
+      }
+    },
+    "OutcomesCapability" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/capability#OutcomesCapability",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Capability"
+        ]
+      }
+    },
+    "Endpoint" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Endpoint",
+      "class" : {}
+
+    },
+    "HasCode" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#HasCode",
+      "class" : {}
+
+    },
+    "ProductProfile" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ProductProfile",
+      "class" : {}
+
+    },
+    "ToolSettingsContainer" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolSettingsContainer",
+      "class" : {}
+
+    },
+    "LtiLink" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#LtiLink",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    },
+    "ToolProxyBinding" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolProxyBinding",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#ToolSettingsContainer"
+        ]
+      }
+    }
+  }
+}

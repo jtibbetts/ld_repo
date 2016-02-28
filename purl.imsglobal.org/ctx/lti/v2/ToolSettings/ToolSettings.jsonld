@@ -1,0 +1,12 @@
+{
+  "@context" : {
+    "lti" : "http://purl.imsglobal.org/vocab/lti/v2/lti#",
+    "LtiLink" : "lti:LtiLink",
+    "PropertyMap" : "lti:PropertyMap",
+    "ToolProxy" : "lti:ToolProxy",
+    "ToolProxyBinding" : "lti:ToolProxyBinding",
+    "ToolSettingsContainer" : "lti:ToolSettingsContainer",
+    "custom" : "lti:custom"
+  },
+  "@id" : "http://purl.imsglobal.org/ctx/lti/v2/ToolSettings"
+}
