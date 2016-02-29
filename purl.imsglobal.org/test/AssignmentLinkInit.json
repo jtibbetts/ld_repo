@@ -1,9 +1,0 @@
-{
-  "@context" : "http://ld.kinexis.com/ctx/lti/v2/AssignmentLink.init",
-  "@type" : "AssignmentLink",
-  "@id" : "http://server.example.com/sections/2923/links/2f526666-2103-45f5-8950-71a0bb55df44",
-  "linkLineItem" : "http://server.example.com/sections/2923/gradebook/items/1",
-  "linkCapability" : [
-    "result.autocreate"
-  ]
-}
