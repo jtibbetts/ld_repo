@@ -52,5 +52,34 @@ In general the following steps are taken:
 	* priority is then given to resources in the order: jsonld, ttl, html
 3. if a target existing file is found the URL is rewritten with mod_rewrite.
 
+## Modifying the Apache configuration
+The file in this repo at conf/ld.conf contains an Apache configuration for a virtual host that serves RDF content.  (I assume that Apache configuration is familiar to the reader).
+
+This configuration is set to the virtual host at ld.kinexis.com.  To use it else where change all the references to appropriate local values for the DocumentRoot, ServerName, log file locations, etc.
+
+The virtual host can be rooted in a couple of different ways that have important differences.
+
+### Absolute repo location
+If you wish to store exactly one repo for one virtual host (e.g., purl.imsglobal.org) use the following options:
+
+* DocumentRoot "/path/to/purl.imsglobal.org"
+* ServerName purl.imsglobal.org
+
+Then the URL http://purl.imsglobal.org/ctx/lis/v2/LineItem will retrieve the requested LineItem resource.
+
+
+### Proxy repo location
+If you wish to create your own version of a existing repo you may want to host your own version of it.  Let's say you're developing new resources for inclusion to purl.imsglobal.org then you may want to replicate the existing repo to your own virtual host.  Configure it similar to above.  But 
+
+* DocumentRoot "/path/to/ld_repo"
+* ServerName ld.kinexis.cm
+
+Then put the content (rooted at the desired repo) into the ld_repo folder.
+
+Now to dereference resources the URL becomes: http://ld.kinexis.com/purl.imsglobal.org/ctx/lis/v2/LineItem
+
+This will require you to change the references in your sources to a modified location.  But since the address space of the internet is world-wide it's a way to avoid name collisions.
+
+
 
 
