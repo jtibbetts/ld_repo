@@ -2,7 +2,7 @@
 basedir=$1
 for dir in $(find "$basedir" -type d); do
 	container=$(basename "$dir")
-	for f in $(find $dir -type f -maxdepth 1); do
+	for f in $(find $dir -maxdepth 1 -type f); do
 		full_filename=$(basename "$f")
 		extension="${full_filename##*.}"
 		filename="${full_filename%.*}"
