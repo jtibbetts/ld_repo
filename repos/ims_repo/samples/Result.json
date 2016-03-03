@@ -1,0 +1,6 @@
+{
+  "@context" : "http://purl.kinexis.com:8888/ctx/lis/v2/Result",
+  "@type" : "Result",
+  "resultScore" : 0.83,
+  "comment" : "This is exceptional work."
+}

@@ -1,0 +1,50 @@
+{
+  "@context" : [
+    "http://purl.kinexis.com:8888/ctx/lis/v2/LineItem",
+    {
+      "res" : "http://purl.kinexis.com:8888/ctx/lis/v2p1/Result#"
+    }
+  ],
+  "@type" : "LineItem",
+  "@id" : "http://lms.example.com/sections/2923/gradebook/items/1",
+  "label" : "Chapter 5 Test",
+  "reportingMethod" : "res:totalScore",
+  "lineItemOf" : {
+    "@id" : "http://lms.example.com/resources/Context/2272",
+    "context_id" : "123-abc"
+  },
+  "assignedActivity" : {
+    "@id" : "http://toolprovider.example.com/assessment/66400",
+    "activity_id" : "a-9334df-33"
+  },
+  "scoreConstraints" : {
+    "@type" : "NumericLimits",
+    "normalMaximum" : 100,
+    "extraCreditMaximum" : 10,
+    "totalMaximum" : 110
+  },
+  "result" : [
+    {
+      "@id" : "http://server.example.com/sections/2923/gradebook/items/1/results/43",
+      "resultOf" : "http://server.example.com/sections/2923/gradebook/items/1",
+      "resultAgent" : "http://server.example.com/persons/54062",
+      "comment" : "Nice work!",
+      "normalScore" : 85,
+      "extraCreditScore" : 3,
+      "penaltyScore" : 0,
+      "totalScore" : 88,
+      "status" : "res:Completed"
+    },
+    {
+      "@id" : "http://server.example.com/sections/2923/gradebook/items/1/results/44",
+      "resultOf" : "http://server.example.com/sections/2923/gradebook/items/1",
+      "resultAgent" : "http://server.example.com/persons/72003",
+      "comment" : "Please come see me",
+      "normalScore" : 52,
+      "extraCreditScore" : 0,
+      "penaltyScore" : 10,
+      "totalScore" : 42,
+      "status" : "res:Started"
+    }
+  ]
+}

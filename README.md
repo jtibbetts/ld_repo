@@ -27,7 +27,7 @@ The underlying assumptions of the repository mechanism described here are as fol
 1. the directory structure of the repo mirrors the namespace of the resource.  
  	* for example, the resource /ctx/lis/v2/LineItem is stored in a repo subdirectory that is in /ctx/lis/v2/LineItem
  
-1. the resource container (e.g. LineItem) is the preferred filename of the resource
+1. the filename of a resource that needs to be accessed by container name is '_content_.<extension>'.
  	* e.g., the LineItem folder might contain LineItem.jsonld, LineItem.ttl, and LineItem.html
  
 1. The preferred mechanism for accessing a resource uses content negotiation
@@ -66,7 +66,6 @@ If you wish to store exactly one repo for one virtual host (e.g., purl.imsglobal
 * ServerName purl.imsglobal.org
 
 Then the URL http://purl.imsglobal.org/ctx/lis/v2/LineItem will retrieve the requested LineItem resource.
-
 
 ### Proxy repo location
 If you wish to create your own version of a existing repo you may want to host your own version of it.  Let's say you're developing new resources for inclusion to purl.imsglobal.org then you may want to replicate the existing repo to your own virtual host.  Configure it similar to above.  But 
