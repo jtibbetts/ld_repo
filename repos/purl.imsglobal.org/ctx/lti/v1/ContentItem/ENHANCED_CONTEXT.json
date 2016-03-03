@@ -1,0 +1,1010 @@
+{
+    "@context" : {
+    "ci" : "http://purl.imsglobal.org/vocab/lti/v1/ci#",
+    "exp" : "http://purl.imsglobal.org/vocab/caliper/v1/core#",
+    "foaf" : "http://xmlns.com/foaf/0.1#",
+    "ldp" : "http://www.w3.org/ns/ldp#",
+    "lism" : "http://purl.imsglobal.org/vocab/lis/v2/mm#",
+    "liso" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#",
+    "lisp" : "http://purl.imsglobal.org/vocab/lis/v2/pm#",
+    "liss" : "http://purl.imsglobal.org/vocab/lis/v2/status#",
+    "lti" : "http://purl.imsglobal.org/vocab/lti/v2/lti#",
+    "lti-type" : "http://purl.imsglobal.org/xsd/lti/v2/ltid#",
+    "org" : "http://www.w3.org/ns/org#",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "schema" : "http://schema.org/",
+    "xs" : "http://www.w3.org/2001/XMLSchema#",
+    "Activity" : {
+      "@id" : "exp:Activity",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/caliper/v1/core#activityId",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Agent" : {
+      "@id" : "foaf:Agent",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/org#hasMembership"
+          }
+        ]
+      }
+    },
+    "AssignmentLinkItem" : {
+      "@id" : "ci:AssignmentLinkItem",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#LtiLinkItem"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#assignmentLineItem",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ContentItem" : {
+      "@id" : "ci:ContentItem",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#mediaType",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#url",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#placementAdvice",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#text",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#title",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#icon",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#thumbnail",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "ContentItemPlacement" : {
+      "@id" : "ci:ContentItemPlacement",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#displayWidth",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#displayHeight",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#windowTarget",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#presentationDocumentTarget",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Context" : {
+      "@id" : "lti:Context",
+      "class" : {
+        "supertype" : [
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#sourcedId",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#lineItems",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#lineItem"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v2/lti#contextId",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "DataValue.Type" : {
+      "@id" : "lti-type:DataValue.Type",
+      "datatype" : {
+        "base" : "http://www.w3.org/2001/XMLSchema#string",
+        "maxLength" : 4096
+      }
+    },
+    "DocumentTarget" : {
+      "@id" : "lti:DocumentTarget",
+      "class" : {}
+
+    },
+    "FileItem" : {
+      "@id" : "ci:FileItem",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#expiresAt",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#copyAdvice",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Image" : {
+      "@id" : "ci:Image",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#height",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#width",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "LISMembershipContainer" : {
+      "@id" : "lism:LISMembershipContainer",
+      "class" : {
+        "supertype" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipPredicate"
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipSubject",
+            "allValuesFrom" : "http://www.w3.org/ns/org#Organization"
+          }
+        ]
+      }
+    },
+    "LISPerson" : {
+      "@id" : "lisp:LISPerson",
+      "class" : {
+        "supertype" : [
+          "http://schema.org/Person"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/pm#resultSourcedId",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/pm#email",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/pm#userId",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "LISResult" : {
+      "@id" : "liso:LISResult",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#timestamp",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#resultScoreConstraints",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#resultStatus",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#resultOf",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#totalScore",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#normalScore",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#penaltyScore",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#extraCreditScore",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "LISStatus" : {
+      "@id" : "liss:LISStatus",
+      "class" : {}
+
+    },
+    "LineItem" : {
+      "@id" : "liso:LineItem",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#label",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#dataSource",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#assignedActivity",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#results",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#reportingMethod",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#scoreConstraints",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#result"
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#lineItemOf",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "LineItemContainer" : {
+      "@id" : "liso:LineItemContainer",
+      "class" : {
+        "supertype" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipPredicate"
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipSubject",
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Context"
+          }
+        ]
+      }
+    },
+    "Literal" : "rdfs:Literal",
+    "LtiLinkItem" : {
+      "@id" : "ci:LtiLinkItem",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lti/v1/ci#custom",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Membership" : {
+      "@id" : "org:Membership",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/org#role",
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/org#organization",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/org#status",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/org#member",
+            "maxCardinality" : 1,
+            "minCardinality" : 1
+          }
+        ]
+      }
+    },
+    "NumericLimits" : {
+      "@id" : "liso:NumericLimits",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#ScoreConstraints"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#normalMaximum",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#totalMaximum",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#extraCreditMaximum",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Organization" : {
+      "@id" : "org:Organization",
+      "class" : {
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/org#membership"
+          },
+          {
+            "onProperty" : "http://schema.org/name",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://www.w3.org/2001/XMLSchema#string"
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/org#memberships",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Person" : {
+      "@id" : "schema:Person",
+      "class" : {
+        "supertype" : [
+          "http://xmlns.com/foaf/0.1#Agent"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://schema.org/name",
+            "maxCardinality" : 1,
+            "allValuesFrom" : "http://www.w3.org/2001/XMLSchema#string"
+          },
+          {
+            "onProperty" : "http://schema.org/img",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://schema.org/givenName",
+            "maxCardinality" : 1
+          },
+          {
+            "onProperty" : "http://schema.org/familyName",
+            "maxCardinality" : 1
+          }
+        ]
+      }
+    },
+    "Property" : "rdf:Property",
+    "PropertyMap" : {
+      "@id" : "lti:PropertyMap",
+      "class" : {}
+
+    },
+    "Resource" : "rdfs:Resource",
+    "ResultContainer" : {
+      "@id" : "liso:ResultContainer",
+      "class" : {
+        "supertype" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ],
+        "restriction" : [
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipPredicate"
+          },
+          {
+            "onProperty" : "http://www.w3.org/ns/ldp#membershipSubject",
+            "allValuesFrom" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+          }
+        ]
+      }
+    },
+    "ResultStatus" : {
+      "@id" : "liso:ResultStatus",
+      "class" : {}
+
+    },
+    "Role" : {
+      "@id" : "org:Role",
+      "class" : {}
+
+    },
+    "ScoreConstraints" : {
+      "@id" : "liso:ScoreConstraints",
+      "class" : {}
+
+    },
+    "activityId" : {
+      "@id" : "exp:activityId",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/caliper/v1/core#Activity"
+        ]
+      }
+    },
+    "assignedActivity" : {
+      "@id" : "liso:assignedActivity",
+      "@type" : "http://purl.imsglobal.org/vocab/caliper/v1/core#Activity",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "assignmentLineItem" : {
+      "@id" : "ci:assignmentLineItem",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#AssignmentLinkItem"
+        ]
+      }
+    },
+    "comment" : {
+      "@id" : "liso:comment",
+      "@type" : "lti-type:DataValue.Type",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "contextId" : {
+      "@id" : "lti:contextId",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "copyAdvice" : {
+      "@id" : "ci:copyAdvice",
+      "@type" : "xs:boolean",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#FileItem"
+        ]
+      }
+    },
+    "custom" : {
+      "@id" : "ci:custom",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#PropertyMap",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#LtiLinkItem"
+        ]
+      }
+    },
+    "dataSource" : {
+      "@id" : "liso:dataSource",
+      "@type" : "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "displayHeight" : {
+      "@id" : "ci:displayHeight",
+      "@type" : "xs:integer",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItemPlacement"
+        ]
+      }
+    },
+    "displayWidth" : {
+      "@id" : "ci:displayWidth",
+      "@type" : "xs:integer",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItemPlacement"
+        ]
+      }
+    },
+    "email" : {
+      "@id" : "lisp:email",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/pm#LISPerson"
+        ]
+      }
+    },
+    "expiresAt" : {
+      "@id" : "ci:expiresAt",
+      "@type" : "xs:dateTime",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#FileItem"
+        ]
+      }
+    },
+    "extraCreditMaximum" : {
+      "@id" : "liso:extraCreditMaximum",
+      "@type" : "xs:float",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#NumericLimits"
+        ]
+      }
+    },
+    "extraCreditScore" : {
+      "@id" : "liso:extraCreditScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "familyName" : {
+      "@id" : "schema:familyName",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://schema.org/Person"
+        ]
+      }
+    },
+    "givenName" : {
+      "@id" : "schema:givenName",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://schema.org/Person"
+        ]
+      }
+    },
+    "gradedBy" : {
+      "@id" : "liso:gradedBy",
+      "@type" : "http://xmlns.com/foaf/0.1#Agent",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "hasMembership" : {
+      "@id" : "org:hasMembership",
+      "@type" : "http://www.w3.org/ns/org#Membership",
+      "property" : {        "domain" : [
+          "http://xmlns.com/foaf/0.1#Agent"
+        ]
+      }
+    },
+    "height" : {
+      "@id" : "ci:height",
+      "@type" : "xs:integer",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#Image"
+        ]
+      }
+    },
+    "icon" : {
+      "@id" : "ci:icon",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v1/ci#Image",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "img" : {
+      "@id" : "schema:img",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://schema.org/Person"
+        ]
+      }
+    },
+    "label" : {
+      "@id" : "liso:label",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "lineItemOf" : {
+      "@id" : "liso:lineItemOf",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v2/lti#Context",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "lineItems" : {
+      "@id" : "lti:lineItems",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItemContainer",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "mediaType" : {
+      "@id" : "ci:mediaType",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "member" : {
+      "@id" : "org:member",
+      "@type" : "http://xmlns.com/foaf/0.1#Agent",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/org#Membership"
+        ]
+      }
+    },
+    "membershipPredicate" : {
+      "@id" : "ldp:membershipPredicate",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ]
+      }
+    },
+    "membershipSubject" : {
+      "@id" : "ldp:membershipSubject",
+      "@type" : "http://www.w3.org/2000/01/rdf-schema#Resource",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/ldp#Container"
+        ]
+      }
+    },
+    "memberships" : {
+      "@id" : "org:memberships",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/mm#LISMembershipContainer",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/org#Organization"
+        ]
+      }
+    },
+    "name" : {
+      "@id" : "schema:name",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://schema.org/Person",
+          "http://www.w3.org/ns/org#Organization"
+        ]
+      }
+    },
+    "normalMaximum" : {
+      "@id" : "liso:normalMaximum",
+      "@type" : "xs:float",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#NumericLimits"
+        ]
+      }
+    },
+    "normalScore" : {
+      "@id" : "liso:normalScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "organization" : {
+      "@id" : "org:organization",
+      "@type" : "http://www.w3.org/ns/org#Organization",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/org#Membership"
+        ]
+      }
+    },
+    "penaltyScore" : {
+      "@id" : "liso:penaltyScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "placementAdvice" : {
+      "@id" : "ci:placementAdvice",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItemPlacement",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "presentationDocumentTarget" : {
+      "@id" : "ci:presentationDocumentTarget",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItemPlacement"
+        ]
+      }
+    },
+    "reportingMethod" : {
+      "@id" : "liso:reportingMethod",
+      "@type" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "resultAgent" : {
+      "@id" : "liso:resultAgent",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/pm#LISPerson",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "resultOf" : {
+      "@id" : "liso:resultOf",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "resultScore" : {
+      "@id" : "liso:resultScore",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    },
+    "resultScoreConstraints" : {
+      "@id" : "liso:resultScoreConstraints",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#ScoreConstraints",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "resultSourcedId" : {
+      "@id" : "lisp:resultSourcedId",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/pm#LISPerson"
+        ]
+      }
+    },
+    "resultStatus" : {
+      "@id" : "liso:resultStatus",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "results" : {
+      "@id" : "liso:results",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#ResultContainer",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "role" : {
+      "@id" : "org:role",
+      "@type" : "http://www.w3.org/ns/org#Role",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/org#Membership"
+        ]
+      }
+    },
+    "scoreConstraints" : {
+      "@id" : "liso:scoreConstraints",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#ScoreConstraints",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "sourcedId" : {
+      "@id" : "lti:sourcedId",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "status" : {
+      "@id" : "org:status",
+      "@type" : "@id",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/org#Membership"
+        ]
+      }
+    },
+    "text" : {
+      "@id" : "ci:text",
+      "@type" : "xs:string",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "thumbnail" : {
+      "@id" : "ci:thumbnail",
+      "@type" : "http://purl.imsglobal.org/vocab/lti/v1/ci#Image",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "timestamp" : {
+      "@id" : "liso:timestamp",
+      "@type" : "xs:dateTime",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "title" : {
+      "@id" : "ci:title",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "totalMaximum" : {
+      "@id" : "liso:totalMaximum",
+      "@type" : "xs:float",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#NumericLimits"
+        ]
+      }
+    },
+    "totalScore" : {
+      "@id" : "liso:totalScore",
+      "@type" : "xs:decimal",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult"
+        ]
+      }
+    },
+    "url" : {
+      "@id" : "ci:url",
+      "@type" : "xs:anyURI",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItem"
+        ]
+      }
+    },
+    "userId" : {
+      "@id" : "lisp:userId",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/pm#LISPerson"
+        ]
+      }
+    },
+    "width" : {
+      "@id" : "ci:width",
+      "@type" : "xs:integer",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#Image"
+        ]
+      }
+    },
+    "windowTarget" : {
+      "@id" : "ci:windowTarget",
+      "@type" : "xs:normalizedString",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v1/ci#ContentItemPlacement"
+        ]
+      }
+    },
+    "lineItem" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lti/v2/lti#lineItem",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lti/v2/lti#Context"
+        ]
+      }
+    },
+    "membership" : {
+      "@id" : "http://www.w3.org/ns/org#membership",
+      "@type" : "http://www.w3.org/ns/org#Membership",
+      "property" : {        "domain" : [
+          "http://www.w3.org/ns/org#Organization"
+        ]
+      }
+    },
+    "result" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#result",
+      "@type" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LISResult",
+      "property" : {        "domain" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"
+        ]
+      }
+    },
+    "Active" : "liss:Active",
+    "Completed" : "liso:Completed",
+    "Deleted" : "liss:Deleted",
+    "Final" : "liso:Final",
+    "Inactive" : "liss:Inactive",
+    "Initialized" : "liso:Initialized",
+    "LISRole" : "lism:LISRole",
+    "Started" : "liso:Started",
+    "embed" : "lti:embed",
+    "frame" : "lti:frame",
+    "iframe" : "lti:iframe",
+    "none" : "lti:none",
+    "overlay" : "lti:overlay",
+    "popup" : "lti:popup",
+    "window" : "lti:window",
+    "normalizedString" : "http://www.w3.org/2001/XMLSchema#normalizedString",
+    "boolean" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "integer" : "http://www.w3.org/2001/XMLSchema#integer",
+    "string" : "http://www.w3.org/2001/XMLSchema#string",
+    "dateTime" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "float" : "http://www.w3.org/2001/XMLSchema#float",
+    "decimal" : "http://www.w3.org/2001/XMLSchema#decimal",
+    "anyURI" : "http://www.w3.org/2001/XMLSchema#anyURI",
+    "Thing" : "http://www.w3.org/2002/07/owl#Thing",
+    "Container" : {
+      "@id" : "http://www.w3.org/ns/ldp#Container",
+      "class" : {}
+
+    },
+    "AbstractResult" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult",
+      "class" : {}
+
+    },
+    "Result" : {
+      "@id" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#Result",
+      "class" : {
+        "supertype" : [
+          "http://purl.imsglobal.org/vocab/lis/v2/outcomes#AbstractResult"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "@context" : {
+    "exp" : "http://purl.imsglobal.org/vocab/caliper/v1/core#",
+    "ldp" : "http://www.w3.org/ns/ldp#",
+    "lism" : "http://purl.imsglobal.org/vocab/lis/v2/mm#",
+    "liso" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#",
+    "lti" : "http://purl.imsglobal.org/vocab/lti/v2/lti#",
+    "org" : "http://www.w3.org/ns/org#",
+    "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "xs" : "http://www.w3.org/2001/XMLSchema#",
+    "Activity" : "exp:Activity",
+    "Container" : "ldp:Container",
+    "Context" : "lti:Context",
+    "LISMembershipContainer" : "lism:LISMembershipContainer",
+    "LineItem" : "liso:LineItem",
+    "LineItemContainer" : "liso:LineItemContainer",
+    "NumericLimits" : "liso:NumericLimits",
+    "Organization" : "org:Organization",
+    "Page" : "ldp:Page",
+    "Property" : "rdf:Property",
+    "Resource" : "rdfs:Resource",
+    "ResultContainer" : "liso:ResultContainer",
+    "ScoreConstraints" : "liso:ScoreConstraints",
+    "activityId" : {
+      "@id" : "exp:activityId",
+      "@type" : "xs:normalizedString"
+    },
+    "assignedActivity" : "liso:assignedActivity",
+    "contextId" : {
+      "@id" : "lti:contextId",
+      "@type" : "xs:normalizedString"
+    },
+    "extraCreditMaximum" : {
+      "@id" : "liso:extraCreditMaximum",
+      "@type" : "xs:float"
+    },
+    "label" : {
+      "@id" : "liso:label",
+      "@type" : "xs:normalizedString"
+    },
+    "lineItem" : "lti:lineItem",
+    "membershipSubject" : "ldp:membershipSubject",
+    "nextPage" : {
+      "@id" : "ldp:nextPage",
+      "@type" : "@id"
+    },
+    "normalMaximum" : {
+      "@id" : "liso:normalMaximum",
+      "@type" : "xs:float"
+    },
+    "pageOf" : "ldp:pageOf",
+    "reportingMethod" : {
+      "@id" : "liso:reportingMethod",
+      "@type" : "@id"
+    },
+    "results" : {
+      "@id" : "liso:results",
+      "@type" : "@id"
+    },
+    "scoreConstraints" : "liso:scoreConstraints",
+    "totalMaximum" : {
+      "@id" : "liso:totalMaximum",
+      "@type" : "xs:float"
+    },
+    "nil" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
+  },
+  "@id" : "http://purl.imsglobal.org/ctx/lis/v2/outcomes/LineItemContainer"
+}
