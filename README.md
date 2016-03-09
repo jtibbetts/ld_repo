@@ -27,7 +27,7 @@ The underlying assumptions of the repository mechanism described here are as fol
 1. the directory structure of the repo mirrors the namespace of the resource.  
  	* for example, the resource /ctx/lis/v2/LineItem is stored in a repo subdirectory that is in /ctx/lis/v2/LineItem
  
-1. the filename of a resource that needs to be accessed by container name is '_content_.<extension>'.
+1. the filename of a resource that needs to be accessed by container name is '\_content\_.&lt;extension&gt;'.
  	* e.g., the LineItem folder might contain LineItem.jsonld, LineItem.ttl, and LineItem.html
  
 1. The preferred mechanism for accessing a resource uses content negotiation
@@ -37,6 +37,19 @@ The underlying assumptions of the repository mechanism described here are as fol
 1. Alternatively an address can explicitly the particular resource file
 	* e.g., /ctx/lis/v2/LineItem/LineItem.ttl
 	* however this is not a best practice
+	
+### Script to normalize the repo directory tree
+The file naming rules outlined above require that each subdirectory serving RDF content has to supply one or more \_content\_.&lt;extension&gt; files.  A script to automatically create these adjustments exists at scripts/make_dirs_rdf.sh.  It will adapt the current imsglobal.org subdirectory conventions and add \_content\_.&lt;extension&gt; where appropriate.
+
+In particular it performs these transformations:
+
+1. It will copy a file of name 'JSON\_LD\_CONTEXT.json' to '\_content\_.jsonld'.  (This addresses context files producted by SemanticTools).
+
+1. It will copy a file of name 'TURTLE.ttl' to '\_content\_.ttl'.  (This addresses ontology files producted by SemanticTools).
+
+1. It will copy a file of name 'index.html' to '\_content\_.html'.
+
+This utility will not remove any files from the subdirectory.
 	
 ## Serving RDF resources with Apache
 The definitive article on serving RDF resources is at [Best Practice Recipes for Publishing RDF Vocabularies](https://www.w3.org/TR/swbp-vocab-pub/).  In particular we follow a recipe quite similar to [Recipe 3. Extended configuration for a 'slash namespace'](https://www.w3.org/TR/swbp-vocab-pub/#recipe3).
@@ -48,7 +61,7 @@ In general the following steps are taken:
 1. an incoming Apache request for a resource is checked if it already addresses a specific resource file by name, if so we're done.
 2. a resource location that maps to a directory then attempts to match a file within that directory that matches the criteria defined in the bulleted assumptions above.
 	* priority is given to files that match the Accept header
-	* if the Accept is jsonld or json, special consideration is given to the particular resource JSON_LD_CONTEXT.jsonld.  This is an artifact of [Greg's Semantic Tools](https://github.com/gmcfall/semantictools.git).
+	* if the Accept is jsonld or json, special consideration is given to the particular resource JSON\_LD\_CONTEXT.jsonld.  This is an artifact of [Greg's Semantic Tools](https://github.com/gmcfall/semantictools.git).
 	* priority is then given to resources in the order: jsonld, ttl, html
 3. if a target existing file is found the URL is rewritten with mod_rewrite.
 
