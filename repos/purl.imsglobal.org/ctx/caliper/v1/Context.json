@@ -1,13 +1,13 @@
 
 {
-  "@id" : "http://purl.kinexis.com:8888/ctx/caliper/v1/Caliper",
+  "@id" : "http://purl.imsglobal.org/ctx/caliper/v1/Caliper",
   "@context" : [
     {
       "_comment": "Namespaces",
 
-      "@vocab": "http://purl.kinexis.com:8888/vocab/caliper/v1/",
+      "@vocab": "http://purl.imsglobal.org/vocab/caliper/v1/",
       "as" : "http://activitystrea.ms/2.0/",
-      "caliper": "http://purl.kinexis.com:8888/caliper/v1/",
+      "caliper": "http://purl.imsglobal.org/caliper/v1/",
       "rdf" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
       "prov": "http://www.w3.org/ns/prov#",
@@ -15,8 +15,8 @@
 
       "org" : "http://www.w3.org/ns/org#", 
       "xs" : "http://www.w3.org/2001/XMLSchema#", 
-      "liscm" : "http://purl.kinexis.com:8888/vocab/lis/v2/liscm#", 
-      "lisp" : "http://purl.kinexis.com:8888/vocab/lis/v2/pm#"
+      "liscm" : "http://purl.imsglobal.org/vocab/lis/v2/liscm#", 
+      "lisp" : "http://purl.imsglobal.org/vocab/lis/v2/pm#"
 
     },
     {
