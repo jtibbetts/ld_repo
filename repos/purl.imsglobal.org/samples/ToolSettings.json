@@ -1,5 +1,5 @@
 {
-  "@context" : "http://purl.kinexis.com:8888/ctx/lti/v2/ToolSettings",
+  "@context" : "http://purl.imsglobal.org/ctx/lti/v2/ToolSettings",
   "@graph" : [ 
     { "@type" : "LtiLink",
       "@id" : "http://tc.example.com/resources/LtiLink/17001",

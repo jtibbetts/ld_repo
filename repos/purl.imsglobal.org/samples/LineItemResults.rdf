@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF
-	xmlns:exp="http://purl.kinexis.com:8888/vocab/caliper/v1/core#"
+	xmlns:exp="http://purl.imsglobal.org/vocab/caliper/v1/core#"
 	xmlns:foaf="http://xmlns.com/foaf/0.1#"
-	xmlns:liso="http://purl.kinexis.com:8888/vocab/lis/v2/outcomes#"
-	xmlns:lisp="http://purl.kinexis.com:8888/vocab/lis/v2/pm#"
-	xmlns:lti="http://purl.kinexis.com:8888/vocab/lti/v2/lti#"
-	xmlns:lti-type="http://purl.kinexis.com:8888/xsd/lti/v2/ltid#"
+	xmlns:liso="http://purl.imsglobal.org/vocab/lis/v2/outcomes#"
+	xmlns:lisp="http://purl.imsglobal.org/vocab/lis/v2/pm#"
+	xmlns:lti="http://purl.imsglobal.org/vocab/lti/v2/lti#"
+	xmlns:lti-type="http://purl.imsglobal.org/xsd/lti/v2/ltid#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema#"
-	xmlns:res="http://purl.kinexis.com:8888/ctx/lis/v2p1/Result#">
+	xmlns:res="http://purl.imsglobal.org/ctx/lis/v2p1/Result#">
 
 <rdf:Description rdf:about="http://lms.example.com/sections/2923/gradebook/items/1">
-	<rdf:type rdf:resource="http://purl.kinexis.com:8888/vocab/lis/v2/outcomes#LineItem"/>
+	<rdf:type rdf:resource="http://purl.imsglobal.org/vocab/lis/v2/outcomes#LineItem"/>
 	<liso:assignedActivity rdf:resource="http://toolprovider.example.com/assessment/66400"/>
 	<liso:lineItemOf rdf:resource="http://lms.example.com/resources/Context/2272"/>
-	<liso:reportingMethod rdf:resource="http://purl.kinexis.com:8888/ctx/lis/v2p1/Result#totalScore"/>
+	<liso:reportingMethod rdf:resource="http://purl.imsglobal.org/ctx/lis/v2p1/Result#totalScore"/>
 	<liso:result rdf:resource="http://server.example.com/sections/2923/gradebook/items/1/results/43"/>
 	<liso:result rdf:resource="http://server.example.com/sections/2923/gradebook/items/1/results/44"/>
 	<liso:scoreConstraints rdf:nodeID="b0"/>
@@ -31,7 +31,7 @@
 </rdf:Description>
 
 <rdf:Description rdf:about="http://server.example.com/sections/2923/gradebook/items/1/results/43">
-	<liso:comment rdf:datatype="http://purl.kinexis.com:8888/xsd/lti/v2/ltid#DataValue.Type">Nice work!</liso:comment>
+	<liso:comment rdf:datatype="http://purl.imsglobal.org/xsd/lti/v2/ltid#DataValue.Type">Nice work!</liso:comment>
 	<liso:extraCreditScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3</liso:extraCreditScore>
 	<liso:normalScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">85</liso:normalScore>
 	<liso:penaltyScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</liso:penaltyScore>
@@ -40,7 +40,7 @@
 </rdf:Description>
 
 <rdf:Description rdf:about="http://server.example.com/sections/2923/gradebook/items/1/results/44">
-	<liso:comment rdf:datatype="http://purl.kinexis.com:8888/xsd/lti/v2/ltid#DataValue.Type">Please come see me</liso:comment>
+	<liso:comment rdf:datatype="http://purl.imsglobal.org/xsd/lti/v2/ltid#DataValue.Type">Please come see me</liso:comment>
 	<liso:extraCreditScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</liso:extraCreditScore>
 	<liso:normalScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">52</liso:normalScore>
 	<liso:penaltyScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10</liso:penaltyScore>
@@ -49,7 +49,7 @@
 </rdf:Description>
 
 <rdf:Description rdf:nodeID="b0">
-	<rdf:type rdf:resource="http://purl.kinexis.com:8888/vocab/lis/v2/outcomes#NumericLimits"/>
+	<rdf:type rdf:resource="http://purl.imsglobal.org/vocab/lis/v2/outcomes#NumericLimits"/>
 	<liso:extraCreditMaximum rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10</liso:extraCreditMaximum>
 	<liso:normalMaximum rdf:datatype="http://www.w3.org/2001/XMLSchema#float">100</liso:normalMaximum>
 	<liso:totalMaximum rdf:datatype="http://www.w3.org/2001/XMLSchema#float">110</liso:totalMaximum>

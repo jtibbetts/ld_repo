@@ -1,13 +1,13 @@
-@prefix exp: <http://purl.kinexis.com:8888/vocab/caliper/v1/core#> .
+@prefix exp: <http://purl.imsglobal.org/vocab/caliper/v1/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1#> .
-@prefix liso: <http://purl.kinexis.com:8888/vocab/lis/v2/outcomes#> .
-@prefix lisp: <http://purl.kinexis.com:8888/vocab/lis/v2/pm#> .
-@prefix lti: <http://purl.kinexis.com:8888/vocab/lti/v2/lti#> .
-@prefix lti-type: <http://purl.kinexis.com:8888/xsd/lti/v2/ltid#> .
+@prefix liso: <http://purl.imsglobal.org/vocab/lis/v2/outcomes#> .
+@prefix lisp: <http://purl.imsglobal.org/vocab/lis/v2/pm#> .
+@prefix lti: <http://purl.imsglobal.org/vocab/lti/v2/lti#> .
+@prefix lti-type: <http://purl.imsglobal.org/xsd/lti/v2/ltid#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix res: <http://purl.kinexis.com:8888/ctx/lis/v2p1/Result#> .
+@prefix res: <http://purl.imsglobal.org/ctx/lis/v2p1/Result#> .
 
 <http://lms.example.com/sections/2923/gradebook/items/1> a liso:LineItem ;
 	liso:assignedActivity <http://toolprovider.example.com/assessment/66400> ;

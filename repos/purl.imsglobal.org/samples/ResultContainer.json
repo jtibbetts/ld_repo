@@ -1,8 +1,8 @@
 {
   "@context" : [
-    "http://purl.kinexis.com:8888/ctx/lis/v2/outcomes/ResultContainer",
+    "http://purl.imsglobal.org/ctx/lis/v2/outcomes/ResultContainer",
     {
-      "res" : "http://purl.kinexis.com:8888/vocab/lis/v2/outcomes#"
+      "res" : "http://purl.imsglobal.org/vocab/lis/v2/outcomes#"
     }
   ],
   "@type" : "Page",
